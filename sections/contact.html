@@ -1,4 +1,4 @@
-<section id="contact" class="min-h-screen py-24 px-[5%] md:px-[9%] bg-slate-50 flex flex-col justify-center">
+<section id="contact" class="scroll-mt-32 min-h-[80vh] py-24 px-[5%] md:px-[9%] bg-slate-50 flex flex-col justify-center">
   <div class="max-w-6xl mx-auto w-full">
     
     <div class="text-center mb-16 reveal">
@@ -22,23 +22,7 @@
           </div>
         </div>
 
-        <div class="flex items-start gap-4">
-          <i class='bx bx-envelope text-3xl text-brand-600 mt-1'></i>
-          <div>
-            <strong class="block font-display font-bold text-lg text-slate-800 mb-1" data-i18n="contact.email">Email</strong>
-            <p class="text-slate-600 font-light">kekelidiane2000@gmail.com</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <i class='bx bx-phone text-3xl text-brand-600 mt-1'></i>
-          <div>
-            <strong class="block font-display font-bold text-lg text-slate-800 mb-1" data-i18n="contact.phone">Téléphone</strong>
-            <p class="text-slate-600 font-light" data-i18n="contact.phone_value">+228 92 84 01 27</p>
-          </div>
-        </div>
-
-        <div class="mt-4 rounded-3xl overflow-hidden border border-slate-200 shadow-md h-48 w-full hover:shadow-lg transition-shadow">
+        <div class="mt-4 rounded-3xl overflow-hidden border border-slate-200 shadow-md h-64 w-full hover:shadow-lg transition-shadow">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126955.35824580004!2d1.144883908836262!3d6.133282247656913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e1c113185419%3A0x3224b5422caf411d!2zTG9tw6ksIFRvZ28!5e0!3m2!1sfr!2sfr!4v1715421523456!5m2!1sfr!2sfr" 
             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -47,28 +31,28 @@
 
       <!-- Contact Form -->
       <div class="lg:col-span-3">
-        <form id="contactForm" class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col gap-6">
+        <form id="contactForm" class="flex flex-col gap-6 max-w-lg">
           <input type="hidden" name="access_key" value="REMPLACER_PAR_VOTRE_CLE_API">
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="relative group">
-              <input type="text" name="name" id="name" placeholder=" " required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer">
+              <input type="text" name="name" id="name" placeholder=" " required class="w-full bg-white/50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer shadow-sm">
               <label for="name" class="absolute left-5 top-5 text-slate-400 text-sm transition-all peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-brand-600 peer-focus:font-semibold peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-[11px] peer-not-placeholder-shown:text-brand-600 peer-not-placeholder-shown:font-semibold" data-i18n="contact.form.name">Nom / Entreprise</label>
             </div>
             
             <div class="relative group">
-              <input type="email" name="email" id="email" placeholder=" " required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer">
+              <input type="email" name="email" id="email" placeholder=" " required class="w-full bg-white/50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer shadow-sm">
               <label for="email" class="absolute left-5 top-5 text-slate-400 text-sm transition-all peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-brand-600 peer-focus:font-semibold peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-[11px] peer-not-placeholder-shown:text-brand-600 peer-not-placeholder-shown:font-semibold" data-i18n="contact.form.email">Email</label>
             </div>
           </div>
 
           <div class="relative group">
-            <input type="text" name="subject" id="subject" placeholder=" " required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer">
+            <input type="text" name="subject" id="subject" placeholder=" " required class="w-full bg-white/50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer shadow-sm">
             <label for="subject" class="absolute left-5 top-5 text-slate-400 text-sm transition-all peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-brand-600 peer-focus:font-semibold peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-[11px] peer-not-placeholder-shown:text-brand-600 peer-not-placeholder-shown:font-semibold" data-i18n="contact.form.subject">Sujet</label>
           </div>
 
           <div class="relative group">
-            <textarea name="message" id="message" rows="5" placeholder=" " required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer resize-none"></textarea>
+            <textarea name="message" id="message" rows="5" placeholder=" " required class="w-full bg-white/50 border border-slate-200 rounded-xl px-5 pb-3 pt-7 text-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all peer resize-none shadow-sm"></textarea>
             <label for="message" class="absolute left-5 top-5 text-slate-400 text-sm transition-all peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-brand-600 peer-focus:font-semibold peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-[11px] peer-not-placeholder-shown:text-brand-600 peer-not-placeholder-shown:font-semibold" data-i18n="contact.form.msg">Message</label>
           </div>
 

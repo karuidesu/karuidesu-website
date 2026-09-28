@@ -1,36 +1,46 @@
-<section id="home" class="min-h-[120vh] pt-[72px] px-[5%] md:px-[9%] flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 bg-gradient-to-br from-slate-50 to-brand-50 relative overflow-hidden">
-  
+<section id="home"
+  class="scroll-mt-32 min-h-[120vh] pt-[72px] px-[5%] md:px-[9%] flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 bg-gradient-to-br from-slate-50 to-brand-50 relative overflow-hidden">
+
   <!-- Decorative background element -->
-  <div class="absolute top-1/4 right-[10%] w-96 h-96 bg-brand-400/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none"></div>
+  <div
+    class="absolute top-1/4 right-[10%] w-96 h-96 bg-brand-400/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none">
+  </div>
 
   <div class="flex-1 max-w-2xl text-center md:text-left z-10">
-    <span class="inline-block text-brand-600 font-semibold tracking-widest uppercase text-sm mb-6 hello-anim" data-i18n="home.greeting">
+    <span class="inline-block text-brand-600 font-semibold tracking-widest uppercase text-sm mb-6 hello-anim"
+      data-i18n="home.greeting">
       Hello
     </span>
-    <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-tight text-slate-800 mb-6 reveal">
+    <!-- Massive font size for the name -->
+    <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-[100px] leading-[1.1] text-slate-800 mb-8 reveal">
       I'm <br>
       <span class="text-brand-600">ADONSOU</span><br>
       Kekeli Diane
     </h1>
-    <div class="mb-10 max-w-lg mx-auto md:mx-0 reveal reveal-delay-1">
+    <div class="mb-10 max-w-3xl mx-auto md:mx-0 reveal reveal-delay-1">
       <span class="block text-lg md:text-xl text-slate-600 leading-relaxed mb-2" data-i18n="home.roles">
-        Software Engineer | Business Systems Analyst | Web Developer
+        Software Engineer | Business Process Analyst | Web Developer
       </span>
-      <span class="block text-md font-medium text-brand-600">
-        Licence professionnelle en génie logiciel (CIC)
-      </span>
+      <!-- <span class="block text-md font-medium text-brand-600">
+        Licence professionnelle en Génie Logiciel
+      </span> -->
     </div>
     <div class="flex flex-wrap gap-4 justify-center md:justify-start reveal reveal-delay-2">
-      <a href="#projects" class="inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-700 hover:-translate-y-1 transition-all duration-300" data-i18n="home.cta">
+      <a href="all-projects.html"
+        class="inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-700 hover:-translate-y-1 transition-all duration-300"
+        data-i18n="home.cta">
         Mes projets
       </a>
     </div>
   </div>
 
   <div class="flex-shrink-0 z-10 reveal reveal-delay-2">
-    <div class="w-[280px] h-[380px] md:w-[360px] md:h-[500px] rounded-3xl bg-slate-200 border-4 border-white shadow-2xl overflow-hidden relative group transition-transform duration-500 hover:-translate-y-2">
-      <div class="absolute inset-0 border-4 border-brand-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
-      <img src="./docs/moi.png" alt="Kekeli Diane ADONSOU" class="w-full h-full object-cover object-top" />
+    <div
+      class="w-[280px] h-[380px] md:w-[360px] md:h-[500px] rounded-3xl bg-slate-200 border-4 border-white shadow-2xl overflow-hidden relative group transition-transform duration-500 hover:-translate-y-2">
+      <div
+        class="absolute inset-0 border-4 border-brand-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+      </div>
+      <img src="./docs/moi.png" alt="me" class="w-full h-full object-cover object-top" />
     </div>
   </div>
 

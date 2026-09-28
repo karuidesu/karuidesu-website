@@ -1,66 +1,115 @@
-<section id="skills" class="min-h-screen py-24 px-[5%] md:px-[9%] bg-slate-50 flex flex-col justify-center">
-  
+<section id="skills"
+  class="scroll-mt-24 min-h-screen py-24 px-[5%] md:px-[9%] bg-slate-50 flex flex-col justify-center">
   <div class="max-w-7xl mx-auto w-full">
+
     <div class="text-center mb-16 reveal">
-      <span class="text-xs font-bold tracking-[0.2em] uppercase text-brand-600 mb-4 block" data-i18n="skills.label">Compétences</span>
-      <h2 class="font-display font-bold text-4xl md:text-5xl text-slate-800" data-i18n="skills.title">Ce que je sais faire.</h2>
+      <span class="text-xs font-bold tracking-[0.2em] uppercase text-brand-600 mb-4 block"
+        data-i18n="skills.label">Expériences & Compétences</span>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-slate-800" data-i18n="skills.title">Mon parcours
+        professionnel.</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal reveal-delay-1">
-      
-      <!-- Card 1 -->
-      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-brand-300 transition-all duration-300 group">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-3xl text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
-            <i class='bx bx-code-alt'></i>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-slate-800" data-i18n="skills.dev.title">Développement</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Python</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Django</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">FastAPI</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Next.js</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Tailwind CSS</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">PostgreSQL</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Java Swing</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">C++</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">MySQL</span>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+      <!-- Experience Column -->
+      <div class="lg:col-span-3">
+        <h3 class="text-2xl font-display font-bold text-slate-800 mb-8 border-b border-slate-200 pb-4"
+          data-i18n="skills.exp_title">Expérience actuelle</h3>
+
+        <div
+          class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm reveal reveal-delay-1 hover:shadow-lg transition-shadow duration-300">
+          <span
+            class="inline-block text-xs font-bold uppercase tracking-wider text-brand-600 mb-2 bg-brand-50 px-3 py-1 rounded-full"
+            data-i18n="skills.exp_date">Depuis janvier 2026</span>
+          <h4 class="text-xl font-bold text-slate-800 mt-2" data-i18n-html="skills.exp_role">Développeuse d’applications
+            <span class="text-slate-400 font-light mx-2">|</span> digi.job</h4>
+          <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="skills.exp_desc">
+            Je suis actuellement en charge de la dématérialisation de services publics à travers l'analyse des besoins,
+            la modélisation des processus (BPMN) et la configuration de workflows complexes sur Odoo. Mon rôle
+            s'articule autour de la conception de solutions robustes pour l'optimisation des directions publiques.
+          </p>
+          <a href="./docs/CV_DIA_TG.pdf" target="_blank"
+            class="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
+            data-i18n-html="skills.exp_link">
+            Voir le détail sur mon CV <i class='bx bx-right-arrow-alt'></i>
+          </a>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-brand-300 transition-all duration-300 group">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-3xl text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
-            <i class='bx bx-wrench'></i>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-slate-800" data-i18n="skills.tools.title">Outils & Modélisation</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Odoo</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Camunda</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Docker</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Git</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">UML</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Mérise</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">BPMN</span>
-        </div>
-      </div>
+      <!-- Certifications & Skills Column -->
+      <div class="lg:col-span-2 space-y-10">
 
-      <!-- Card 3 -->
-      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-brand-300 transition-all duration-300 group">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-3xl text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
-            <i class='bx bx-palette'></i>
+        <!-- Certifications -->
+        <div class="bg-white rounded-3xl p-8 border border-brand-100 shadow-lg shadow-brand-100/50 reveal">
+          <h3 class="text-lg font-display font-bold text-brand-600 mb-6 flex items-center gap-3"
+            data-i18n-html="skills.cert_title">
+            <i class='bx bx-certification text-2xl'></i>
+            En cours & Formations
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class='bx bx-check-circle text-brand-500 mt-1'></i>
+              <div>
+                <strong class="block text-slate-800" data-i18n="skills.cert1">Modélisation BPMN</strong>
+                <span class="text-sm text-slate-500 font-light" data-i18n="skills.cert1_desc">En cours de
+                  certification</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class='bx bx-check-circle text-brand-500 mt-1'></i>
+              <div>
+                <strong class="block text-slate-800" data-i18n="skills.cert2">Management des SI</strong>
+                <span class="text-sm text-slate-500 font-light" data-i18n="skills.cert2_desc">Formation continue</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class='bx bx-check-circle text-brand-500 mt-1'></i>
+              <div>
+                <strong class="block text-slate-800" data-i18n="skills.cert3">Architectures Logicielles</strong>
+                <span class="text-sm text-slate-500 font-light" data-i18n="skills.cert3_desc">Formation continue</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm reveal reveal-delay-2">
+          <h3 class="text-lg font-display font-bold text-slate-800 mb-6" data-i18n="skills.stack_title">Stack & Outils
+          </h3>
+
+          <div class="space-y-4">
+            <div>
+              <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2"
+                data-i18n="skills.stack_backend">Backend & Logiciel</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">Python</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">Django</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">FastAPI</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div>
+              <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2"
+                data-i18n="skills.stack_process">Processus & Analyse</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-brand-50 text-brand-600 text-xs font-medium rounded-lg">Odoo</span>
+                <span class="px-3 py-1 bg-brand-50 text-brand-600 text-xs font-medium rounded-lg">BPMN</span>
+                <span class="px-3 py-1 bg-brand-50 text-brand-600 text-xs font-medium rounded-lg">UML</span>
+              </div>
+            </div>
+
+            <div>
+              <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2"
+                data-i18n="skills.stack_frontend">Frontend</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">Next.js</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">Tailwind CSS</span>
+              </div>
+            </div>
           </div>
-          <h3 class="font-display font-bold text-2xl text-slate-800" data-i18n="skills.design.title">Créativité & Design</h3>
         </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Adobe Photoshop</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">Canva</span>
-          <span class="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-xl border border-slate-200">CapCut</span>
-        </div>
+
       </div>
 
     </div>
