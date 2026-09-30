@@ -1,272 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" class="scroll-smooth">
 
 <head>
-    <meta charset="utf-8" />
-    <title>karuidesu_portfolio</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fontawesome.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karuidesu — Portfolio</title>
+  <meta name="description"
+    content="Portfolio de Kekeli Diane ADONSOU — Software Engineer, Business Systems Analyst et Web Developer basée à Lomé, Togo." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+    rel="stylesheet">
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Lordicon for animated Lotties (if still needed) -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            body: ['Outfit', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7', // Primary blue
+              700: '#0369a1', // Dark blue
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          animation: {
+            'float-slow': 'float 4s ease-in-out infinite',
+            'float-fast': 'float 2.5s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: 1, boxShadow: '0 0 0 0 rgba(2, 132, 199, 0.4)' },
+              '50%': { opacity: .7, boxShadow: '0 0 20px 10px rgba(2, 132, 199, 0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles (minimal) -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <header class="header">
-        <a href="#" alt="" class="logo">@karuidesu</a>
+<body
+  class="bg-slate-50 text-slate-800 font-body antialiased overflow-x-hidden selection:bg-brand-200 selection:text-brand-900">
 
-        <nav class="navbar">
-            <a href="#home" class="active">Accueil</a>
-            <a href="#about">A propos</a>
-            <a href="#education">Formations</a>
-            <a href="#services">Compétences</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <!-- App Container -->
+  <div id="app" class="flex flex-col min-h-screen"></div>
 
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>Hellooo, <br> Je suis Kekeli Diane ADONSOU</h1>
-            <h3>Développeuse</h3>
-            <p>
-                Compétente en développement back-end<br>
-                Je suis ouverte à de nouvelles opportunités, enthousiaste à l'idée de collaborer sur des projets et
-                d'apprendre de nouvelles choses.
-            </p>
-
-            <div class="btn-box">
-                <a href="#contact" class="btn">Contactez-moi</a>
-                <a href="./docs/CV_DIA_TG.pdf" target="_blank" class="btn">Mon CV</a>
-            </div>
-        </div>
-        <div class="home-img">
-            <img src="./docs/moi.png" alt="me">
-        </div>
-
-    </section>
-
-    <section class="about" id="about">
-        <h2 class="heading">Qui suis-je ?</h2>
-        <div class="about-content">
-            <p>
-                👋Hellooo, je suis étudiante, développeuse web passionnée par le langage Python et le développement
-                back-end, avec une expérience avec les technologies Django, DRF et FastAPI. Actuellement en formation
-                sur JavaScript, je cherche à approfondir mes compétences tout en contribuant à des projets concrets.
-                <br>
-                🫂En parallèle, je suis impliquée dans le bénévolat et le volontariat, dont une mission en service
-                civique que je fais actuellement basée sur la réalisation et la mise en place des projets durables
-                autour des thématiques des Objectifs de Développement Durable, l’animation des ateliers et d’un tiers
-                lieu.<br>
-            </p>
-        </div>
-    </section>
-
-    <section class="education" id="education">
-        <h2 class="heading">Parcours & Formations</h2>
-        <div class="education-column">
-            <div class="education-box">
-                <div class="education-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar'></i>Depuis 2021</div>
-                        <h3>Licence professionnelle en Genie Logiciel - Ecole Polytechnique de Lomé</h3>
-                        <p>
-                            Formation axée sur le développement et la maintenance de logiciels,
-                            couvrant la programmation orientée objet avec C++ et Java , les bases de données,
-                            le génie logiciel agile, et les outils modernes de développement.
-                            J'ai acquis des compétences pratiques en analyse des besoins, conception de systèmes de
-                            projets logiciels,
-                            ainsi qu'en collaboration sur des projets d'équipe.
-                        </p>
-                    </div>
-                </div>
-                <div class="education-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar'></i>Depuis 2022</div>
-                        <h3>Formation autodidacte en analyse fonctionnelle et gestion de projets</h3>
-                        <p>
-                            J'ai acquis des compétences en planification, suivi et coordination de projets logiciels,
-                            en utilisant des méthodologies de gestion de projets comme Agile et Scrum.
-                            Cette formation m'a permis de développer une vision globale du cycle de vie des projets
-                            informatiques.
-                        </p>
-                    </div>
-                </div>
-                <div class="education-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar'></i>Depuis Février 2023</div>
-                        <h3>Formation autodidacte en développement back-end avec Python</h3>
-                        <p>
-                            J'ai appris à concevoir des API REST, gérer des bases de données, mettre en place des
-                            systèmes sécurisés.
-                            Cette formation m'a permis de travailler sur des projets avec des frameworks populaires tels
-                            que Django et FastAPI,
-                            ainsi que les bonnes pratiques de développement logiciel.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- <div class="education-column">
-                    <h3 class="title">Expériences professionelles</h3>
-
-                    <div class="education-box">
-
-                        <div class="education-content">
-                            <div class="content">
-                                <div class="year"><i class='bx bxs-calendar'></i>Janvier - Juillet 2023</div>
-                                <h3>Finaliste du concours Miabe Hackathon</h3>
-                                <p>
-                                    Mise au point d’un site de gestion et de réservation de chambres d'hôtels. <br>
-                                    Mise au point d’une plate-forme de gestion, d'acheminement et de vente des produits agricoles du nord à Lomé.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="education-content">
-                            <div class="content">
-                                <div class="year"><i class='bx bxs-calendar'></i>2021 - 2023</div>
-                                <h3>Autres projets</h3>
-                                <p>
-                                    Modélisation d’un projet de gestion gestion d’une boutique de location de véhicules. <br>
-                                    Modélisation d’un projet de gestion d’un supermarché (en cours).
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div> -->
-    </section>
-
-    <section class="services" id="services">
-        <h2 class="heading">Compétences</h2>
-        <div class="services-row">
-            <div class="services-column">
-                <div class="services-box">
-                    <div class="services-content">
-                        <h3 class="title">Analyse fontionnelle</h3>
-                        <p>
-                            Analyse approfondie des besoins <br />
-                            Conception de cahiers de charges
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="services-column">
-                <div class="services-box">
-                    <div class="services-content">
-                        <h3 class="title">Développement back-end</h3>
-                        <p>
-                            Conception d'API REST <br />
-                            Gestion de base de données
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="services-column">
-                <div class="services-box">
-                    <div class="services-content">
-                        <h3 class="title">Community management</h3>
-                        <p>
-                            Communication <br />
-                            Rédaction et créativité <br />
-                            Social media management
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="services-column">
-                <div class="services-box">
-                    <div class="services-content">
-                        <h3 class="title">Autres compétences</h3>
-                        <p>
-                            Montage vidéo <br />
-                            Hotelerie: service et accueil <br />
-                            Soutien scolaire, gestion de bibliotheque <br />
-                            Coiffures et tresses africaines
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="services-column">
-                <div class="services-box">
-                    <div class="services-content">
-                        <h3 class="title">Outils utilisés</h3>
-                        <p>
-                            Python, JavaScript, Java <br />
-                            Méthodologie Agile-Scrum, UML, Mérise <br />
-                            MySQL, PostgreSQL, MongoDB <br />
-                            Capcut, Canva, Pack Microsoft Office
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="heading">Contactez-moi</h2>
-
-        <form action="contact.php" method="post">
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" placeholder="Nom" required>
-                    <span class="focus"></span>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" placeholder="Prénom(s)" required>
-                    <span class="focus"></span>
-                </div>
-            </div>
-
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" placeholder="Numero de téléphone" required>
-                    <span class="focus"></span>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" placeholder="Objet" required>
-                    <span class="focus"></span>
-                </div>
-            </div>
-
-            <div class="textarea-field">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Ecrivez votre message"></textarea>
-                <span class="focus"></span>
-            </div>
-
-            <div class="btn-box btns">
-                <button type="submit" class="btn">Envoyez</button>
-            </div>
-        </form>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-text">
-            <p> &copy; 2025 Karuidesu | All Rights Reserved. </p>
-        </div>
-
-        <div class="footer-sci">
-            <a href="https://github.com/kekelidiane"><i class="bx bxl-github"></i></a>
-            <a href="https://www.linkedin.com/in/kekeli-diane"><i class="bx bxl-linkedin"></i></a>
-            <a href="https://www.youtube.com/@akarui_worship"><i class="bx bxl-youtube"></i></a>
-            <a href="https://www.instagram.com/karuidesu_"><i class="bx bxl-instagram"></i></a>
-            <a href="https://www.facebook.com/karuidesu"><i class='bx bxl-facebook'></i></a>
-            <a href="https://x.com/karuidesu_"><i class="bx bxl-twitter"></i></a>
-        </div>
-
-        <div class="footer-iconTop">
-            <a href="#"><i class='bx bx-chevrons-up'></i></a>
-        </div>
-    </footer>
-
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
-
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
