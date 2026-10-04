@@ -18,13 +18,20 @@ export default function Contact() {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+      const formDataObj = Object.fromEntries(formData.entries());
+      const res = await fetch('http://localhost:8000/api/contact/send/', { 
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formDataObj) 
+      });
       const data = await res.json();
       if (data.success) {
         setStatus({ message: t('contact.form.success'), type: 'success' });
         form.reset();
       } else {
-        setStatus({ message: t('contact.form.error'), type: 'error' });
+        setStatus({ message: data.error || t('contact.form.error'), type: 'error' });
       }
     } catch (err) {
       setStatus({ message: t('contact.form.error'), type: 'error' });
@@ -38,43 +45,22 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-[72px] py-16 px-[5%] md:px-[9%] bg-transparent relative overflow-hidden">
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-600/10 rounded-full blur-[100px] pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
-        <div className="md:w-5/12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+        <div className="md:w-5/12 flex flex-col justify-center text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-4 mb-6">
+            <div className="inline-flex items-center gap-4 mb-6 justify-center">
               <span className="w-8 h-[2px] bg-brand-600 shadow-[0_0_10px_rgba(2,132,199,0.5)]"></span>
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-400">
                 {t("contact.label")}
               </span>
+              <span className="w-8 h-[2px] bg-brand-600 shadow-[0_0_10px_rgba(2,132,199,0.5)] hidden md:block"></span>
             </div>
             <h2 className="font-display font-bold text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-lg">
               {t("contact.title")}
             </h2>
-            <p className="text-slate-300 text-lg leading-relaxed font-light mb-12 drop-shadow-md">
+            <p className="text-slate-300 text-lg leading-relaxed font-light drop-shadow-md mx-auto">
               {t("contact.subtitle")}
             </p>
-
-            <div className="space-y-6">
-              <a href="mailto:kekelidiane3@gmail.com" className="flex items-center gap-5 p-5 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-brand-500/50 hover:shadow-[0_0_30px_rgba(2,132,199,0.2)] transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-2xl bg-brand-600/20 flex items-center justify-center text-brand-400 text-2xl group-hover:bg-brand-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                  <i className='bx bx-envelope'></i>
-                </div>
-                <div>
-                  <span className="block text-xs text-brand-300 font-bold uppercase tracking-widest mb-1">Email</span>
-                  <span className="block text-white font-medium text-lg tracking-wide">kekelidiane3@gmail.com</span>
-                </div>
-              </a>
-              
-              <div className="flex items-center gap-5 p-5 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-brand-600/20 flex items-center justify-center text-brand-400 text-2xl">
-                  <i className='bx bx-map'></i>
-                </div>
-                <div>
-                  <span className="block text-xs text-brand-300 font-bold uppercase tracking-widest mb-1">{t("contact.address")}</span>
-                  <span className="block text-white font-medium text-lg tracking-wide">{t("contact.address_value")}</span>
-                </div>
-              </div>
-            </div>
           </Reveal>
         </div>
 
@@ -83,32 +69,40 @@ export default function Contact() {
             <input type="hidden" name="access_key" value="51722e1f-7f72-46cc-952b-c8c364736f83" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-3">
-                <label htmlFor="name" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1">{t("contact.form.name")}</label>
-                <input type="text" id="name" name="name" required
-                  className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-black/40 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-500"
-                  placeholder="John Doe" />
+              <div className="space-y-3 group">
+                <label htmlFor="name" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.name")}</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                    <i className='bx bx-user text-xl'></i>
+                  </div>
+                  <input type="text" id="name" name="name" required
+                    className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 shadow-inner hover:border-brand-500/30"
+                    placeholder="John Doe" />
+                </div>
               </div>
-              <div className="space-y-3">
-                <label htmlFor="email" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1">{t("contact.form.email")}</label>
-                <input type="email" id="email" name="email" required
-                  className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-black/40 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-500"
-                  placeholder="john@example.com" />
+              <div className="space-y-3 group">
+                <label htmlFor="email" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.email")}</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                    <i className='bx bx-envelope text-xl'></i>
+                  </div>
+                  <input type="email" id="email" name="email" required
+                    className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 shadow-inner hover:border-brand-500/30"
+                    placeholder="john@example.com" />
+                </div>
               </div>
             </div>
 
-            <div className="space-y-3 mb-8">
-              <label htmlFor="subject" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1">{t("contact.form.subject")}</label>
-              <input type="text" id="subject" name="subject" required
-                className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-black/40 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-500"
-                placeholder="Proposition de mission" />
-            </div>
-
-            <div className="space-y-3 mb-10">
-              <label htmlFor="message" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1">{t("contact.form.msg")}</label>
-              <textarea id="message" name="message" rows={5} required
-                className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-black/40 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-500 resize-none"
-                placeholder="Bonjour Diane..."></textarea>
+            <div className="space-y-3 mb-10 group">
+              <label htmlFor="message" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.msg")}</label>
+              <div className="relative">
+                <div className="absolute top-5 left-0 pl-5 pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                  <i className='bx bx-message-square-detail text-xl'></i>
+                </div>
+                <textarea id="message" name="message" rows={5} required
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 resize-none shadow-inner hover:border-brand-500/30"
+                  placeholder="Bonjour Diane..."></textarea>
+              </div>
             </div>
 
             <div className="flex items-center justify-between">

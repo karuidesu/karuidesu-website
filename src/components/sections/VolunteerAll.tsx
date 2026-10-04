@@ -16,7 +16,7 @@ export default function VolunteerAll() {
           <i className='bx bx-left-arrow-alt text-lg group-hover:-translate-x-1 transition-transform'></i>
           <span>{t("projects.back")}</span>
         </Link>
-        
+
         <Reveal className="text-center md:text-left mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
             {t("volunteer.all.title")}

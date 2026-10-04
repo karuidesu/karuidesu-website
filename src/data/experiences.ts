@@ -11,8 +11,8 @@ export const EXPERIENCES = [
       en: "Since January 2026"
     },
     description: {
-      fr: "Collecte et analyse des besoins auprès des ministères et directions publiques.\nCartographie et modélisation des processus métiers (As-Is / To-Be) via la norme BPMN.\nConception et déploiement de formulaires dynamiques pour la dématérialisation de services.\nConfiguration des workflows et procédures métiers complexes sur Odoo.",
-      en: "Requirements gathering and analysis from ministries and public directorates.\nMapping and modeling business processes (As-Is / To-Be) using BPMN standard.\nDesign and deployment of dynamic forms for service dematerialization.\nConfiguration of complex workflows and business procedures on Odoo."
+      fr: "En tant que développeuse d'applications chez digi.job, je participe à la transformation numérique en traduisant les besoins des clients en solutions techniques fonctionnelles. Mon processus commence par la collecte de données auprès des clients pour cartographier leurs processus existants via la norme BPMN, me permettant de concevoir et proposer des alternatives numérisées optimisées. Ensuite, je donne vie à ces solutions en les configurant dans des environnements de développement. Pour assurer un déploiement réussi, j'effectue des tests approfondis du système et j'assure la formation pratique des administrateurs et des utilisateurs finaux.",
+      en: "As an Application Developer at digi.job, I participate in the digital transformation by translating client needs into functional technical solutions. My workflow starts with collecting data directly from clients to map their existing processes using BPMN, which allows me to design and propose optimized, digitized alternatives. Then, I bring these solutions to life by configuring them in development environments. To ensure a successful deployment, I conduct thorough system testing and provide hands-on training for both system administrators and end-users."
     }
   },
   {
@@ -27,8 +27,8 @@ export const EXPERIENCES = [
       en: "July 2025 - January 2026"
     },
     description: {
-      fr: "Réalisation d’un wiki pour la centralisation des connaissances internes pour digi.job (projet de Licence).\nCartographie et digitalisation des services publics (BPMN, Total.js, from Scratch).",
-      en: "Creation of a wiki to centralize internal knowledge for digi.job (Bachelor's project).\nMapping and digitalization of public services (BPMN, Total.js, from Scratch)."
+      fr: "Au cours de ce stage, j'ai réalisé un wiki complet pour centraliser les connaissances internes de l'entreprise, dans le cadre de mon projet de Licence. J'ai également participé activement à la cartographie et à la digitalisation complète de divers services publics à l'aide de BPMN et Total.js, en concevant des solutions sur mesure en partant de zéro.",
+      en: "During this internship, I developed a comprehensive wiki to centralize internal knowledge for the company as part of my Bachelor's project. I also actively participated in the mapping and full digitalization of various public services using BPMN and Total.js, working entirely from scratch to deliver custom digital solutions."
     }
   },
   {
@@ -43,8 +43,8 @@ export const EXPERIENCES = [
       en: "July - October 2024"
     },
     description: {
-      fr: "Développement de l’architecture backend du système d’information de l’école.\nImplémentation d'un système d'authentification sécurisé et gestion des rôles et accès.\nCollaboration avec l’équipe frontend pour l’amélioration de l’interface utilisateur.",
-      en: "Development of the backend architecture for the school's information system.\nImplementation of a secure authentication system and role/access management.\nCollaboration with the frontend team to improve the user interface."
+      fr: "J'étais en charge du développement de l'architecture backend du système d'information de l'école. Mon travail a consisté à implémenter un système d'authentification sécurisé ainsi qu'une gestion complète des rôles et des accès. J'ai également collaboré étroitement avec l'équipe frontend pour intégrer les API et améliorer l'interface et l'expérience utilisateur globale.",
+      en: "I was responsible for developing the core backend architecture of the school's information system. My work involved implementing a highly secure authentication system along with comprehensive role and access management features. I also collaborated closely with the frontend team to seamlessly integrate APIs and improve the overall user interface and experience."
     }
   },
   {
@@ -59,8 +59,8 @@ export const EXPERIENCES = [
       en: "May and June 2024"
     },
     description: {
-      fr: "Développement d’interfaces d'applications mobiles sous Android (Kotlin, Jetpack Compose).",
-      en: "Development of mobile application interfaces for Android (Kotlin, Jetpack Compose)."
+      fr: "Lors de ce stage en développement mobile, je me suis concentrée sur la création d'interfaces d'applications dynamiques et responsives pour les plateformes Android. J'ai utilisé des technologies modernes telles que Kotlin et Jetpack Compose.",
+      en: "In this mobile development internship, I focused on creating dynamic and responsive application interfaces for Android platforms. I utilized modern technologies such as Kotlin and Jetpack Compose."
     }
   }
 ];

@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Reveal } from '@/components/Reveal';
-import { ChessCanvas, BizCanvas, MangaCanvas, PsycheCanvas } from '@/components/canvas/CanvasAnimations';
+import { NeuroCanvas, BizCanvas, MangaCanvas, AstroCanvas } from '@/components/canvas/CanvasAnimations';
 
 export default function Interests() {
   const { t } = useLanguage();
@@ -28,13 +28,13 @@ export default function Interests() {
           <Reveal delay={0.1}>
             <div className="group h-full bg-slate-900/50 rounded-3xl border border-slate-800 p-8 hover:bg-slate-800 hover:border-brand-600 transition-all duration-300">
               <div className="w-full h-40 mb-6 rounded-2xl bg-slate-950 flex items-center justify-center relative overflow-hidden border border-slate-800/50">
-                <ChessCanvas />
+                <NeuroCanvas />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors">
-                {t("interests.chess.title")}
+              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors text-center">
+                {t("interests.neuroscience.title")}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {t("interests.chess.text")}
+              <p className="text-slate-400 text-sm leading-relaxed text-center">
+                {t("interests.neuroscience.text")}
               </p>
             </div>
           </Reveal>
@@ -42,13 +42,13 @@ export default function Interests() {
           <Reveal delay={0.2}>
             <div className="group h-full bg-slate-900/50 rounded-3xl border border-slate-800 p-8 hover:bg-slate-800 hover:border-brand-600 transition-all duration-300">
               <div className="w-full h-40 mb-6 rounded-2xl bg-slate-950 flex items-center justify-center relative overflow-hidden border border-slate-800/50">
-                <MangaCanvas />
+                <AstroCanvas />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors">
-                {t("interests.manga.title")}
+              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors text-center">
+                {t("interests.astrophysics.title")}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {t("interests.manga.text")}
+              <p className="text-slate-400 text-sm leading-relaxed text-center">
+                {t("interests.astrophysics.text")}
               </p>
             </div>
           </Reveal>
@@ -58,10 +58,10 @@ export default function Interests() {
               <div className="w-full h-40 mb-6 rounded-2xl bg-slate-950 flex items-center justify-center relative overflow-hidden border border-slate-800/50">
                 <BizCanvas />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors">
+              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors text-center">
                 {t("interests.business.title")}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-400 text-sm leading-relaxed text-center">
                 {t("interests.business.text")}
               </p>
             </div>
@@ -70,13 +70,13 @@ export default function Interests() {
           <Reveal delay={0.4}>
             <div className="group h-full bg-slate-900/50 rounded-3xl border border-slate-800 p-8 hover:bg-slate-800 hover:border-brand-600 transition-all duration-300">
               <div className="w-full h-40 mb-6 rounded-2xl bg-slate-950 flex items-center justify-center relative overflow-hidden border border-slate-800/50">
-                <PsycheCanvas />
+                <MangaCanvas />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors">
-                {t("interests.psyche.title")}
+              <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-brand-400 transition-colors text-center">
+                {t("interests.manga.title")}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {t("interests.psyche.text")}
+              <p className="text-slate-400 text-sm leading-relaxed text-center">
+                {t("interests.manga.text")}
               </p>
             </div>
           </Reveal>

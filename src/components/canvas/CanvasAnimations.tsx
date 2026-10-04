@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-export const ChessCanvas = () => {
+export const NeuroCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -12,143 +12,87 @@ export const ChessCanvas = () => {
     if (!ctx) return;
 
     let animationId: number;
+    let cw: number = 0, ch: number = 0;
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth * 2;
-      canvas.height = canvas.offsetHeight * 2;
+      cw = canvas.offsetWidth;
+      ch = canvas.offsetHeight;
+      canvas.width = cw * 2;
+      canvas.height = ch * 2;
       ctx.scale(2, 2);
     };
     resize();
 
-    const cw = canvas.offsetWidth;
-    const ch = canvas.offsetHeight;
-    const cellSize = Math.floor(Math.min(cw, ch) / 9);
-    const ox = (cw - cellSize * 8) / 2;
-    const oy = (ch - cellSize * 8) / 2;
-
-    const pieces = [
-      { type: 'K', color: 'w', x: 4, y: 7, sym: '♔' },
-      { type: 'Q', color: 'w', x: 3, y: 7, sym: '♕' },
-      { type: 'N', color: 'w', x: 6, y: 7, sym: '♘' },
-      { type: 'N', color: 'w', x: 1, y: 7, sym: '♘' },
-      { type: 'B', color: 'w', x: 2, y: 7, sym: '♗' },
-      { type: 'B', color: 'w', x: 5, y: 7, sym: '♗' },
-      { type: 'R', color: 'w', x: 0, y: 7, sym: '♖' },
-      { type: 'R', color: 'w', x: 7, y: 7, sym: '♖' },
-      { type: 'P', color: 'w', x: 0, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 1, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 2, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 3, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 4, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 5, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 6, y: 6, sym: '♙' },
-      { type: 'P', color: 'w', x: 7, y: 6, sym: '♙' },
-      
-      { type: 'K', color: 'b', x: 4, y: 0, sym: '♚' },
-      { type: 'Q', color: 'b', x: 3, y: 0, sym: '♛' },
-      { type: 'N', color: 'b', x: 6, y: 0, sym: '♞' },
-      { type: 'N', color: 'b', x: 1, y: 0, sym: '♞' },
-      { type: 'B', color: 'b', x: 2, y: 0, sym: '♝' },
-      { type: 'B', color: 'b', x: 5, y: 0, sym: '♝' },
-      { type: 'R', color: 'b', x: 0, y: 0, sym: '♜' },
-      { type: 'R', color: 'b', x: 7, y: 0, sym: '♜' },
-      { type: 'P', color: 'b', x: 0, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 1, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 2, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 3, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 4, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 5, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 6, y: 1, sym: '♟' },
-      { type: 'P', color: 'b', x: 7, y: 1, sym: '♟' }
-    ];
-
-    const sequence = [
-      { p: 12, tx: 4, ty: 4 }, 
-      { p: 28, tx: 4, ty: 3 }, 
-      { p: 2, tx: 5, ty: 5 },  
-      { p: 19, tx: 2, ty: 2 }, 
-      { p: 19, tx: 1, ty: 0 }, 
-      { p: 2, tx: 6, ty: 7 },  
-      { p: 28, tx: 4, ty: 1 }, 
-      { p: 12, tx: 4, ty: 6 }, 
-    ];
-
-    let moveIdx = 0, animProgress = 1, startX = 0, startY = 0, t = 0;
-
+    let t = 0;
     const animate = () => {
       t++;
       ctx.clearRect(0, 0, cw, ch);
-      
-      for (let r = 0; r < 8; r++) {
-        for (let c = 0; c < 8; c++) {
-          const isWhite = (r + c) % 2 === 0;
-          ctx.fillStyle = isWhite ? '#f8fafc' : '#e0f2fe';
-          ctx.fillRect(ox + c * cellSize, oy + r * cellSize, cellSize, cellSize);
-        }
-      }
-      ctx.strokeStyle = '#bae6fd'; 
+
+      const realNodes = [
+        {x: cw * 0.2, y: ch * 0.3},
+        {x: cw * 0.8, y: ch * 0.2},
+        {x: cw * 0.5, y: ch * 0.6},
+        {x: cw * 0.25, y: ch * 0.8},
+        {x: cw * 0.85, y: ch * 0.75},
+        {x: cw * 0.6, y: ch * 0.3},
+        {x: cw * 0.4, y: ch * 0.2}
+      ];
+
+      // Draw connections
+      ctx.strokeStyle = 'rgba(14, 165, 233, 0.2)';
       ctx.lineWidth = 1;
-      ctx.strokeRect(ox, oy, cellSize*8, cellSize*8);
       
-      if (animProgress < 1) {
-        const m = sequence[moveIdx % sequence.length];
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
-        ctx.fillRect(ox + startX * cellSize, oy + startY * cellSize, cellSize, cellSize);
-        ctx.fillRect(ox + m.tx * cellSize, oy + m.ty * cellSize, cellSize, cellSize);
+      for(let i=0; i<realNodes.length; i++) {
+        for(let j=i+1; j<realNodes.length; j++) {
+           const dist = Math.hypot(realNodes[i].x - realNodes[j].x, realNodes[i].y - realNodes[j].y);
+           if (dist < cw * 0.7) {
+              ctx.beginPath();
+              ctx.moveTo(realNodes[i].x, realNodes[i].y);
+              ctx.lineTo(realNodes[j].x, realNodes[j].y);
+              ctx.stroke();
+           }
+        }
       }
+
+      // Draw firing signals
+      const pulseT1 = t % 150;
+      const pulseT2 = (t + 50) % 180;
+      const pulseT3 = (t + 100) % 120;
       
-      ctx.font = `${cellSize * 0.75}px sans-serif`;
-      ctx.textAlign = 'center'; 
-      ctx.textBaseline = 'middle';
-      
-      pieces.forEach((p, i) => {
-        if (animProgress < 1 && i === sequence[moveIdx % sequence.length].p) return; 
-        ctx.fillStyle = p.color === 'w' ? '#0284c7' : '#0f172a';
-        ctx.fillText(p.sym, ox + p.x * cellSize + cellSize / 2, oy + p.y * cellSize + cellSize / 2 + 2);
-      });
-      
-      if (animProgress < 1) {
-        const m = sequence[moveIdx % sequence.length];
-        const p = pieces[m.p];
-        const ease = (1 - Math.cos(animProgress * Math.PI)) / 2; 
-        const px = startX + (m.tx - startX) * ease;
-        const py = startY + (m.ty - startY) * ease;
-        
-        const arc = Math.sin(animProgress * Math.PI) * (cellSize * 0.6);
-        
-        ctx.fillStyle = 'rgba(0,0,0,0.1)';
-        ctx.beginPath(); 
-        ctx.ellipse(ox + px * cellSize + cellSize/2, oy + py * cellSize + cellSize/2, cellSize/2, cellSize/4, 0, 0, Math.PI*2); 
-        ctx.fill();
-        
-        ctx.fillStyle = p.color === 'w' ? '#0284c7' : '#0f172a';
-        ctx.shadowColor = 'rgba(2, 132, 199, 0.3)';
-        ctx.shadowBlur = 8;
-        ctx.fillText(p.sym, ox + px * cellSize + cellSize / 2, oy + py * cellSize + cellSize / 2 + 2 - arc);
+      const drawSignal = (fromIdx: number, toIdx: number, progress: number) => {
+         if (progress > 1) return;
+         const from = realNodes[fromIdx];
+         const to = realNodes[toIdx];
+         const x = from.x + (to.x - from.x) * progress;
+         const y = from.y + (to.y - from.y) * progress;
+         ctx.fillStyle = '#38bdf8';
+         ctx.shadowColor = '#38bdf8';
+         ctx.shadowBlur = 10;
+         ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI*2); ctx.fill();
+         ctx.shadowBlur = 0;
+      };
+
+      drawSignal(0, 2, pulseT1 / 100);
+      drawSignal(2, 4, pulseT2 / 100);
+      drawSignal(1, 5, pulseT3 / 100);
+      drawSignal(5, 3, (t%140) / 100);
+
+      // Draw nodes
+      realNodes.forEach((node, i) => {
+        const floatY = Math.sin(t*0.02 + i) * 3;
+        ctx.fillStyle = '#0ea5e9';
+        ctx.shadowColor = '#0ea5e9';
+        ctx.shadowBlur = 15;
+        ctx.beginPath(); ctx.arc(node.x, node.y + floatY, 5, 0, Math.PI*2); ctx.fill();
         ctx.shadowBlur = 0;
-      }
-      
-      if (animProgress >= 1) {
-        if (t % 150 === 0) {
-          animProgress = 0;
-          const m = sequence[moveIdx % sequence.length];
-          startX = pieces[m.p].x;
-          startY = pieces[m.p].y;
-        }
-      } else {
-        animProgress += 0.015;
-        if (animProgress >= 1) {
-          animProgress = 1;
-          const m = sequence[moveIdx % sequence.length];
-          pieces[m.p].x = m.tx;
-          pieces[m.p].y = m.ty;
-          moveIdx++;
-        }
-      }
-      
+        
+        ctx.fillStyle = '#f8fafc';
+        ctx.beginPath(); ctx.arc(node.x, node.y + floatY, 2.5, 0, Math.PI*2); ctx.fill();
+      });
+
       animationId = requestAnimationFrame(animate);
     };
-    
+
     animate();
 
     return () => cancelAnimationFrame(animationId);
@@ -184,48 +128,59 @@ export const BizCanvas = () => {
     let t = 0;
 
     const animate = () => {
-      t += 0.015;
+      t += 0.02;
       ctx.clearRect(0, 0, cw, ch);
       const barW = (cw - 40) / bars.length;
-      const maxH = ch - 30;
+      const maxH = ch - 40;
+
+      // Draw Grid lines
+      ctx.strokeStyle = 'rgba(2, 132, 199, 0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 1; i <= 4; i++) {
+         ctx.beginPath(); ctx.moveTo(10, ch - i * (maxH/4) - 10); ctx.lineTo(cw - 10, ch - i * (maxH/4) - 10); ctx.stroke();
+      }
 
       for (let i = 0; i < bars.length; i++) {
         const target = targetBars[i];
-        currentBars[i] += (target - currentBars[i]) * 0.04;
+        currentBars[i] += (target - currentBars[i]) * 0.08;
         const bh = currentBars[i] * maxH;
         const x = 20 + i * barW;
-        const grad = ctx.createLinearGradient(x, ch - bh, x, ch - 10);
-        grad.addColorStop(0, '#38bdf8');
-        grad.addColorStop(1, '#0284c7');
+        const grad = ctx.createLinearGradient(x, ch - bh - 10, x, ch - 10);
+        grad.addColorStop(0, 'rgba(56, 189, 248, 0.8)');
+        grad.addColorStop(1, 'rgba(2, 132, 199, 0.1)');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(x + 4, ch - 10 - bh, barW - 8, bh, [4, 4, 0, 0]);
+        ctx.roundRect(x + 6, ch - 10 - bh, barW - 12, bh, [4, 4, 0, 0]);
         ctx.fill();
       }
 
-      ctx.strokeStyle = '#0c4a6e';
-      ctx.lineWidth = 2;
+      // Trend Line
+      ctx.strokeStyle = '#38bdf8';
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 10;
+      ctx.lineWidth = 3;
       ctx.beginPath();
       for (let i = 0; i < bars.length; i++) {
         const x = 20 + i * barW + barW / 2;
-        const y = ch - 10 - currentBars[i] * maxH - 8;
+        const y = ch - 10 - currentBars[i] * maxH - 12;
         if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
       for (let i = 0; i < bars.length; i++) {
         const x = 20 + i * barW + barW / 2;
-        const y = ch - 10 - currentBars[i] * maxH - 8;
-        ctx.fillStyle = '#fff'; 
+        const y = ch - 10 - currentBars[i] * maxH - 12;
+        ctx.fillStyle = '#0f172a'; 
         ctx.beginPath(); 
-        ctx.arc(x, y, 4, 0, Math.PI * 2); 
+        ctx.arc(x, y, 5, 0, Math.PI * 2); 
         ctx.fill();
-        ctx.strokeStyle = '#0284c7'; 
+        ctx.strokeStyle = '#bae6fd'; 
         ctx.lineWidth = 2; 
         ctx.stroke();
       }
 
-      if (Math.floor(t) % 4 === 0 && t % 1 < 0.02) {
+      if (Math.floor(t) % 6 === 0 && t % 1 < 0.03) {
         targetBars = targetBars.map(() => 0.2 + Math.random() * 0.7);
       }
 
@@ -238,7 +193,7 @@ export const BizCanvas = () => {
   }, []);
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
-};
+}
 
 export const MangaCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -262,6 +217,7 @@ export const MangaCanvas = () => {
     resize();
 
     let t = 0;
+    let slashT = 0;
 
     const drawGrimoire = (x: number, y: number, hover: number) => {
       ctx.save();
@@ -298,10 +254,10 @@ export const MangaCanvas = () => {
       ctx.restore();
     };
 
-    const drawSword = (x: number, y: number, hover: number) => {
+    const drawSword = (x: number, y: number, hover: number, angle: number) => {
       ctx.save();
       ctx.translate(x, y + hover);
-      ctx.rotate(Math.PI / 6);
+      ctx.rotate(angle);
       
       ctx.shadowColor = 'rgba(15, 23, 42, 0.3)';
       ctx.shadowBlur = 10;
@@ -339,11 +295,32 @@ export const MangaCanvas = () => {
 
     const animate = () => {
       t++;
+      slashT++;
       ctx.clearRect(0, 0, cw, ch);
       
       const cx = cw / 2, cy = ch / 2;
       
-      drawSword(cx + 35, cy, Math.sin(t * 0.05 + 1) * 8);
+      // Speed lines
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)';
+      ctx.lineWidth = 1;
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(t * 0.01);
+      for(let i=0; i<12; i++) {
+         ctx.rotate((Math.PI * 2) / 12);
+         ctx.beginPath(); ctx.moveTo(30, 0); ctx.lineTo(cw, 0); ctx.stroke();
+      }
+      ctx.restore();
+
+      let swordAngle = Math.PI / 6;
+      if (slashT % 150 > 130) {
+         swordAngle -= (slashT % 150 - 130) * 0.2; // Slash!
+         if (slashT % 150 > 140) swordAngle = Math.PI / 6 - 2.0 + (slashT % 150 - 140) * 0.2; // Recover
+      } else if (slashT % 150 > 120) {
+         swordAngle += 0.2; // Wind up
+      }
+
+      drawSword(cx + 35, cy, Math.sin(t * 0.05 + 1) * 8, swordAngle);
       drawGrimoire(cx - 25, cy, Math.sin(t * 0.05) * 8);
       
       ctx.fillStyle = '#38bdf8';
@@ -365,9 +342,9 @@ export const MangaCanvas = () => {
   }, []);
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
-};
+}
 
-export const PsycheCanvas = () => {
+export const AstroCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -407,86 +384,50 @@ export const PsycheCanvas = () => {
       
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.strokeStyle = 'rgba(14, 165, 233, 0.15)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      for(let i=0; i<points.length; i++) {
-        for(let j=i+1; j<points.length; j++) {
-          const dx = points[i].x - points[j].x;
-          const dy = points[i].y - points[j].y;
-          if (dx*dx+dy*dy < 2500) {
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
-          }
-        }
-      }
-      ctx.stroke();
       
-      for(let i=0; i<points.length; i++) {
-        const p = points[i];
-        p.blink += p.speed;
-        const alpha = 0.2 + Math.abs(Math.sin(p.blink)) * 0.8;
-        ctx.fillStyle = `rgba(56, 189, 248, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI*2);
-        ctx.fill();
-        
-        p.x += Math.sin(t * p.speed) * 0.3;
-        p.y += Math.cos(t * p.speed) * 0.3;
-      }
-      ctx.restore();
-
-      ctx.save();
-      ctx.translate(cx, cy);
-      
-      const nodes = [
-        {x: -18, y: -12},
-        {x: 18, y: -18},
-        {x: 0, y: 18},
-        {x: -28, y: 15},
-        {x: 28, y: 12},
-        {x: 0, y: -30}
-      ];
-      
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(nodes[0].x, nodes[0].y); ctx.lineTo(nodes[1].x, nodes[1].y);
-      ctx.lineTo(nodes[2].x, nodes[2].y); ctx.lineTo(nodes[0].x, nodes[0].y);
-      ctx.lineTo(nodes[3].x, nodes[3].y); ctx.lineTo(nodes[2].x, nodes[2].y);
-      ctx.moveTo(nodes[1].x, nodes[1].y); ctx.lineTo(nodes[4].x, nodes[4].y);
-      ctx.lineTo(nodes[2].x, nodes[2].y);
-      ctx.moveTo(nodes[0].x, nodes[0].y); ctx.lineTo(nodes[5].x, nodes[5].y);
-      ctx.lineTo(nodes[1].x, nodes[1].y);
-      ctx.stroke();
-      
-      ctx.save();
-      ctx.rotate(t * 0.02);
-      ctx.strokeStyle = 'rgba(14, 165, 233, 0.2)';
-      ctx.beginPath();
-      ctx.ellipse(0, 0, 40, 15, Math.PI/4, 0, Math.PI*2);
-      ctx.stroke();
-      
-      const eAngle = t * 0.05;
-      const ex = Math.cos(eAngle) * 40;
-      const ey = Math.sin(eAngle) * 15;
-      ctx.fillStyle = '#bae6fd';
-      ctx.beginPath();
-      const px = ex * Math.cos(Math.PI/4) - ey * Math.sin(Math.PI/4);
-      const py = ex * Math.sin(Math.PI/4) + ey * Math.cos(Math.PI/4);
-      ctx.arc(px, py, 2.5, 0, Math.PI*2);
-      ctx.fill();
-      ctx.restore();
-      
+      // Draw Nucleus
       ctx.shadowColor = '#38bdf8';
-      ctx.shadowBlur = 12;
-      for (let i = 0; i < nodes.length; i++) {
-          const n = nodes[i];
-          const glow = 0.4 + Math.sin(t * 0.05 + i) * 0.6;
-          ctx.fillStyle = `rgba(56, 189, 248, ${glow})`;
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, 4, 0, Math.PI*2);
-          ctx.fill();
+      ctx.shadowBlur = 15;
+      ctx.fillStyle = '#0ea5e9';
+      ctx.beginPath();
+      ctx.arc(0, 0, 8, 0, Math.PI*2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      
+      // Draw Orbits
+      const orbits = 3;
+      for (let i = 0; i < orbits; i++) {
+        ctx.save();
+        ctx.rotate((Math.PI / orbits) * i + t * 0.005);
+        ctx.strokeStyle = 'rgba(14, 165, 233, 0.3)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 45, 15, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        // Draw Electron
+        const eAngle = t * 0.04 + i * (Math.PI * 2 / orbits);
+        const ex = Math.cos(eAngle) * 45;
+        const ey = Math.sin(eAngle) * 15;
+        
+        ctx.fillStyle = '#bae6fd';
+        ctx.shadowColor = '#bae6fd';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.arc(ex, ey, 3, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
+      
+      // Background particles
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
+      for (let i = 0; i < 15; i++) {
+        const pT = t + i * 100;
+        const px = Math.sin(pT * 0.01) * 80 + Math.cos(pT * 0.02) * 20;
+        const py = Math.cos(pT * 0.015) * 60 + Math.sin(pT * 0.025) * 30;
+        ctx.beginPath();
+        ctx.arc(px, py, 1, 0, Math.PI*2);
+        ctx.fill();
       }
       
       ctx.restore();

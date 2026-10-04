@@ -17,10 +17,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [lang, setLang] = useState<Language>("en");
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("portfolio-lang") as Language;
-    if (savedLang && (savedLang === "fr" || savedLang === "en")) {
-      setLang(savedLang);
-    }
+    // Force English by default, ignore localStorage on initial load
+    localStorage.setItem("portfolio-lang", "en");
   }, []);
 
   const handleSetLang = (newLang: Language) => {
@@ -33,7 +31,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang: handleSetLang, t }}>
       {children}
     </LanguageContext.Provider>
   );

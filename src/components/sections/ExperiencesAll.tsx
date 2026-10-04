@@ -23,21 +23,23 @@ export default function ExperiencesAll() {
           </h2>
         </Reveal>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {EXPERIENCES.map((exp, idx) => (
             <Reveal key={exp.id} delay={idx * 0.1}>
-              <div className="bg-slate-900/40 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-sm hover:shadow-lg transition-shadow duration-300 relative overflow-hidden">
+              <div className="bg-slate-900/40 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-sm hover:shadow-lg transition-shadow duration-300 relative overflow-hidden flex flex-col h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-600/5 blur-[50px] -mr-10 -mt-10 pointer-events-none"></div>
                 
-                <span className="inline-block text-xs font-bold uppercase tracking-wider text-brand-600 mb-4 bg-brand-900/30 px-4 py-2 rounded-full border border-brand-800/30">
-                  {exp.date[lang as 'fr' | 'en']}
-                </span>
-                <h4 className="text-2xl font-bold text-white mt-2 mb-2">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+                  <div className="text-brand-400 font-medium flex items-center">
+                    <i className='bx bx-building-house mr-2 text-xl'></i>{exp.company}
+                  </div>
+                  <span className="inline-block text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-900/30 px-3 py-1.5 rounded-full border border-brand-800/30 text-center">
+                    {exp.date[lang as 'fr' | 'en']}
+                  </span>
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-2">
                   {exp.role[lang as 'fr' | 'en']}
                 </h4>
-                <div className="text-brand-400 font-medium mb-6">
-                  <i className='bx bx-building-house mr-2'></i>{exp.company}
-                </div>
                 <p className="mt-4 text-slate-300 leading-relaxed whitespace-pre-line font-light">
                   {exp.description[lang as 'fr' | 'en']}
                 </p>

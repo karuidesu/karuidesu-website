@@ -7,7 +7,7 @@ export const VOLUNTEERING = [
     },
     organization: "Cloud Native Community Group Lomé",
     date: {
-      fr: "Nov 2025 - Présent",
+      fr: "Nov 2025 - Aujourd'hui",
       en: "Nov 2025 - Present"
     },
     description: {
@@ -18,12 +18,12 @@ export const VOLUNTEERING = [
   {
     id: 2,
     role: {
-      fr: "Volunteer Staff",
-      en: "Volunteer Staff"
+      fr: "Bénévole",
+      en: "Volunteer"
     },
     organization: "Google Developers Group - Lomé",
     date: {
-      fr: "Août 2023 - Présent",
+      fr: "Août 2023 - Aujourd'hui",
       en: "Aug 2023 - Present"
     },
     description: {
@@ -34,7 +34,41 @@ export const VOLUNTEERING = [
   {
     id: 3,
     role: {
-      fr: "Volontaire international de réciprocité",
+      fr: "Community Manager",
+      en: "Community Manager"
+    },
+    organization: "GDG on Campus Université de Lomé",
+    date: {
+      fr: "Aujourd'hui",
+      en: "Present"
+    },
+    description: {
+      fr: "• Création et publication de contenus\n• Relais des annonces officielles du GDG on Campus\n• Engagement et croissance de la communauté",
+      en: "• Content creation and publishing\n• Broadcasting official GDG on Campus announcements\n• Community engagement and growth"
+    }
+  },
+
+  {
+    id: 4,
+    role: {
+      fr: "Volontaire International de Réciprocité",
+      en: "International Reciprocity Volunteer"
+    },
+    organization: "Perle du Monde Association",
+    date: {
+      fr: "Oct 2024 - Fév 2025",
+      en: "Oct 2024 - Feb 2025"
+    },
+    description: {
+      fr: "• Mise en place d’outils d’animation (Objectifs de Développement Durable)\n• Gestion d’une boutique et de colis\n• Création de contenus et animation des réseaux sociaux\n• Montage vidéo et appels à projets",
+      en: "• Development of animation tools (Sustainable Development Goals)\n• Shop and package management\n• Content creation and social media management\n• Video editing and project calls"
+    }
+  },
+  ,
+  {
+    id: 5,
+    role: {
+      fr: "Volontaire International de Réciprocité",
       en: "International Reciprocity Volunteer"
     },
     organization: "Association Solidarité Afrique",
@@ -48,51 +82,19 @@ export const VOLUNTEERING = [
     }
   },
   {
-    id: 4,
+    id: 6,
     role: {
       fr: "Volunteer Staff",
       en: "Volunteer Staff"
     },
     organization: "TDEV",
     date: {
-      fr: "Juil 2023 - Présent",
+      fr: "Juil 2023 - Aujourd'hui",
       en: "Jul 2023 - Present"
     },
     description: {
       fr: "Organisation d'événements (Tdev Festival, Meet&Greet, OpenSource Day).\n• Accueil et orientation des participants\n• Assistance aux speakers\n• Gestion du matériel et coordination des bénévoles",
       en: "Event organization (Tdev Festival, Meet&Greet, OpenSource Day).\n• Welcoming and guiding participants\n• Assisting speakers\n• Equipment management and volunteer coordination"
-    }
-  },
-  {
-    id: 5,
-    role: {
-      fr: "Volontaire international de réciprocité",
-      en: "International Reciprocity Volunteer"
-    },
-    organization: "Perle du Monde Association",
-    date: {
-      fr: "Oct 2024 - Fév 2025",
-      en: "Oct 2024 - Feb 2025"
-    },
-    description: {
-      fr: "• Mise en place d’outils d’animation (Objectifs de Développement Durable)\n• Gestion d’une boutique et de colis\n• Création de contenus et animation des réseaux sociaux\n• Montage vidéo et appels à projets",
-      en: "• Development of animation tools (Sustainable Development Goals)\n• Shop and package management\n• Content creation and social media management\n• Video editing and project calls"
-    }
-  },
-  {
-    id: 6,
-    role: {
-      fr: "Community Manager",
-      en: "Community Manager"
-    },
-    organization: "GDG on Campus Université de Lomé",
-    date: {
-      fr: "Présent",
-      en: "Present"
-    },
-    description: {
-      fr: "• Création et publication de contenus\n• Relais des annonces officielles du GDG on Campus\n• Engagement et croissance de la communauté",
-      en: "• Content creation and publishing\n• Broadcasting official GDG on Campus announcements\n• Community engagement and growth"
     }
   },
   {
@@ -123,8 +125,8 @@ export const VOLUNTEERING = [
       en: "Dec 2024 - Jun 2025"
     },
     description: {
-      fr: "Auvergne Rhone Alpes.",
-      en: "Auvergne Rhone Alpes."
+      fr: "J'ai été bénévole au sein de la région Auvergne Rhone Alpes en France. J'ai participé à l'animation e plusieurs activités ainsi qu'à une formation pour le projet COURSE CONTRE LA FAIM.",
+      en: "I was a volunteer in the Auvergne Rhone Alpes region in France. I participated in animating several activities and a training course for the project RUN AGAINST HUNGER."
     }
   },
   {
@@ -139,8 +141,8 @@ export const VOLUNTEERING = [
       en: "Sep 2023 - Sep 2024"
     },
     description: {
-      fr: "Événement '5 km à pied' (sensibilisation cancer du sein).\n• Installation, assistance et orientation\n• Sensibilisation du public au dépistage précoce",
-      en: "'5 km run' event (breast cancer awareness).\n• Setup, assistance, and guidance\n• Public awareness on early screening"
+      fr: "Au cours des éditions 2023 et 2024, j'ai participé à l'événement '5 km à pied'. J'ai participé à la sensibilisation au dépistage précoce du cancer du sein à travers l'animation, l'installation, l'assistance et l'orientation des participants.",
+      en: "During the 2023 and 2024 editions, I participated in the '5 km à pied' event. I participated in the awareness campaign for early breast cancer screening through animation, installation, assistance and guidance of participants."
     }
   },
   {
@@ -151,7 +153,7 @@ export const VOLUNTEERING = [
     },
     organization: "ASSOCIATION VICE TOGO",
     date: {
-      fr: "Présent",
+      fr: "Aujourd'hui",
       en: "Present"
     },
     description: {
@@ -167,7 +169,7 @@ export const VOLUNTEERING = [
     },
     organization: "UJPOD",
     date: {
-      fr: "Présent",
+      fr: "Aujourd'hui",
       en: "Present"
     },
     description: {

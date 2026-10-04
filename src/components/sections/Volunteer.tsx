@@ -11,7 +11,12 @@ const logos = [
   "/assets/logos/tdev-logo.jpeg",
   "/assets/logos/logo-ujpod.jpg",
   "/assets/logos/logo_vicetg_bg.jpg",
-  "/assets/logos/cncg-lome-logo.png"
+  "/assets/logos/cncg-lome-logo.png",
+  "/assets/logos/acf_logo.jpg",
+  "/assets/logos/all-for-change_logo.jpg",
+  "/assets/logos/pma_logo.png",
+  "/assets/logos/solidarite-afrique_logo.jpg",
+  "/assets/logos/tcd_logo.jpg"
 ];
 
 const LOGO_SIZE = 80; // w-20 h-20 is 80px
@@ -25,7 +30,7 @@ export default function Volunteer() {
   useEffect(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
-    
+
     // Initialize balls
     const balls = logos.map((_, i) => ({
       x: Math.random() * (container.clientWidth - LOGO_SIZE),
@@ -44,11 +49,11 @@ export default function Volunteer() {
 
       for (let i = 0; i < balls.length; i++) {
         let b = balls[i];
-        
+
         // Wall collisions
         if (b.x <= 0) { b.x = 0; b.vx *= -1; }
         else if (b.x + LOGO_SIZE >= width) { b.x = width - LOGO_SIZE; b.vx *= -1; }
-        
+
         if (b.y <= 0) { b.y = 0; b.vy *= -1; }
         else if (b.y + LOGO_SIZE >= height) { b.y = height - LOGO_SIZE; b.vy *= -1; }
 
@@ -81,12 +86,12 @@ export default function Volunteer() {
             b.vy = vy1 * cos + vx1 * sin;
             b2.vx = vx2 * cos - vy2 * sin;
             b2.vy = vy2 * cos + vx2 * sin;
-            
+
             // Separate to prevent sticking
             let overlap = (RADIUS * 2) - dist;
             let sepX = (overlap / 2) * cos;
             let sepY = (overlap / 2) * sin;
-            
+
             b.x -= sepX;
             b.y -= sepY;
             b2.x += sepX;
@@ -135,8 +140,8 @@ export default function Volunteer() {
 
         <Reveal delay={0.2} className="lg:w-1/2 w-full relative">
           <div className="absolute inset-0 bg-brand-500/5 blur-[100px] rounded-full pointer-events-none"></div>
-          
-          <div 
+
+          <div
             ref={containerRef}
             className="bg-slate-950/80 p-8 rounded-3xl border border-slate-800 relative z-10 shadow-2xl h-[400px] overflow-hidden w-full"
           >

@@ -26,7 +26,7 @@ export default function Home() {
             Kekeli Diane
           </h1>
         </Reveal>
-        
+
         <Reveal delay={0.15}>
           <div className="mb-10 max-w-3xl mx-auto md:mx-0">
             <span className="block text-lg md:text-xl text-slate-300 leading-relaxed mb-2">
@@ -34,22 +34,28 @@ export default function Home() {
             </span>
           </div>
         </Reveal>
-        
+
         <Reveal delay={0.3}>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
             <Link href="/projects"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-700 hover:-translate-y-1 transition-all duration-300">
               {t("home.cta")}
             </Link>
+            <a href="./public/assets/diana_cv.pdf" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white font-semibold rounded-full border border-slate-700 shadow-lg hover:bg-slate-700 hover:-translate-y-1 transition-all duration-300 gap-2">
+              <i className="bx bx-download text-xl"></i> {t("nav.cv")}
+            </a>
           </div>
         </Reveal>
       </div>
 
       <Reveal delay={0.3} className="flex-shrink-0 z-10">
-        <div className="w-[280px] h-[380px] md:w-[360px] md:h-[500px] rounded-3xl bg-slate-800 border-4 border-slate-800 shadow-2xl overflow-hidden relative group transition-transform duration-500 hover:-translate-y-2">
-          <div className="absolute inset-0 border-4 border-brand-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+        <div className="flex flex-col items-center">
+          <div className="w-[280px] h-[380px] md:w-[360px] md:h-[500px] rounded-3xl bg-slate-800 border-4 border-slate-800 shadow-2xl overflow-hidden relative group transition-transform duration-500 hover:-translate-y-2 mb-6">
+            <div className="absolute inset-0 border-4 border-brand-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+            </div>
+            <img src="/assets/moi.png" alt="me" className="w-full h-full object-cover object-top" />
           </div>
-          <img src="/assets/moi.png" alt="me" className="w-full h-full object-cover object-top" />
         </div>
       </Reveal>
 

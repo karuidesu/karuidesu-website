@@ -35,6 +35,7 @@ export default function Header() {
     { id: "skills", i18n: "nav.skills" },
     { id: "projects", i18n: "nav.projects" },
     { id: "volunteer", i18n: "nav.volunteer" },
+    { id: "interests", i18n: "interests.label" },
     { id: "contact", i18n: "nav.contact" },
   ];
 
@@ -59,10 +60,6 @@ export default function Header() {
       </nav>
 
       <div className="flex items-center gap-4">
-        <a href="/assets/CV_DIA_TG.pdf" target="_blank"
-          className="hidden md:inline-flex items-center justify-center text-sm font-semibold px-6 py-2 border-2 border-brand-600 text-brand-600 rounded-full hover:bg-brand-600 hover:text-white transition-all shadow-sm hover:shadow-brand-300/50">
-          <span>{t("nav.resume")}</span>
-        </a>
 
         <div id="langToggle" className="flex gap-1 bg-slate-800/50 p-1 rounded-full border border-slate-800">
           <button onClick={() => setLang("fr")}
