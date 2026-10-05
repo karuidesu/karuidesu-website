@@ -19,12 +19,13 @@ export default function Contact() {
 
     try {
       const formDataObj = Object.fromEntries(formData.entries());
-      const res = await fetch('http://localhost:8000/api/contact/send/', { 
-        method: 'POST', 
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formDataObj) 
+        body: JSON.stringify(formDataObj)
       });
       const data = await res.json();
       if (data.success) {
@@ -44,7 +45,7 @@ export default function Contact() {
   return (
     <section id="contact" className="scroll-mt-[72px] py-16 px-[5%] md:px-[9%] bg-transparent relative overflow-hidden">
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-600/10 rounded-full blur-[100px] pointer-events-none"></div>
-      
+
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
         <div className="md:w-5/12 flex flex-col justify-center text-center">
           <Reveal>
@@ -66,8 +67,8 @@ export default function Contact() {
 
         <Reveal delay={0.2} className="md:w-7/12">
           <form id="contactForm" onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative z-10">
-            <input type="hidden" name="access_key" value="51722e1f-7f72-46cc-952b-c8c364736f83" />
-            
+            <input type="hidden" name="access_key" value={process.env.WEB3FORMS_ACCESS_KEY} />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="space-y-3 group">
                 <label htmlFor="name" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.name")}</label>
@@ -114,7 +115,7 @@ export default function Contact() {
                   <><i className='bx bx-send text-2xl'></i> {t("contact.form.send")}</>
                 )}
               </button>
-              
+
               <span id="formStatus" className={`text-sm font-bold tracking-wide ${status.type === 'error' ? 'text-red-400' : 'text-green-400'}`}>
                 {status.message}
               </span>

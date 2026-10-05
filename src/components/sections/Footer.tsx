@@ -13,7 +13,7 @@ export default function Footer() {
         {/* Left: Copyright */}
         <div className="flex-1 flex justify-center md:justify-start">
           <p className="text-slate-500 text-sm font-medium">
-            2026 © Designed by @karuidesu. {t("footer.rights")}
+            2026 © @karuidesu. {t("footer.rights")}
           </p>
         </div>
 

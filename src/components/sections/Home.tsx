@@ -41,7 +41,7 @@ export default function Home() {
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-700 hover:-translate-y-1 transition-all duration-300">
               {t("home.cta")}
             </Link>
-            <a href="./public/assets/diana_cv.pdf" target="_blank" rel="noopener noreferrer"
+            <a href="/assets/diana_cv.pdf" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white font-semibold rounded-full border border-slate-700 shadow-lg hover:bg-slate-700 hover:-translate-y-1 transition-all duration-300 gap-2">
               <i className="bx bx-download text-xl"></i> {t("nav.cv")}
             </a>
