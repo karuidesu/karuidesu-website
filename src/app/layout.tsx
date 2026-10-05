@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Karuidesu — Portfolio",
-  description: "Portfolio de Kekeli Diane ADONSOU — Software Engineer, Business Systems Analyst et Web Developer basée à Lomé, Togo.",
+  title: "Kekeli Diane ADONSOU - @karuidesu Portfolio",
+  description: "Portfolio de Kekeli Diane ADONSOU - Software Engineer, Business Process Analyst et Web Developer.",
 };
 
 export default function RootLayout({

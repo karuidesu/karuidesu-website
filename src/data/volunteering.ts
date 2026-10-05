@@ -64,7 +64,6 @@ export const VOLUNTEERING = [
       en: "• Development of animation tools (Sustainable Development Goals)\n• Shop and package management\n• Content creation and social media management\n• Video editing and project calls"
     }
   },
-  ,
   {
     id: 5,
     role: {

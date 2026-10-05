@@ -1,17 +1,19 @@
 ## Stack
 
 - **Next.js**
-- **Tailwind CSS**
 - **TypeScript**
+- **Tailwind CSS**
 - **Prerequisites : Node.js 18+**
+
+> Parts of the code in this project were developed with the assistance of Google Gemini.
 
 ## Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/karuidesu/portfolio.git
-cd portfolio
+git clone https://github.com/karuidesu/karuidesu-website.git
+cd karuidesu-website
 ```
 
 ### 2. Install dependencies
@@ -53,4 +55,6 @@ src/
 3. Commit your changes
 4. Open a Pull Request
 
-# *_ARIGATO_*
+## MIT License
+
+### *_ARIGATO_*
