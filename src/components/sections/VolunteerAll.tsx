@@ -18,7 +18,7 @@ export default function VolunteerAll() {
         </Link>
 
         <Reveal className="text-center md:text-left mb-16">
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
+          <h2 className="font-display font-semibold text-4xl md:text-5xl text-white">
             {t("volunteer.all.title")}
           </h2>
         </Reveal>
@@ -28,7 +28,7 @@ export default function VolunteerAll() {
             <Reveal key={vol.id} delay={idx * 0.1}>
               <div className="bg-slate-900/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/5 hover:border-brand-500/20 transition-all h-full shadow-lg">
                 <div className="flex flex-col mb-4">
-                  <h4 className="text-xl font-bold text-white mb-2">{vol.role[lang as 'fr' | 'en']}</h4>
+                  <h4 className="text-xl font-semibold text-white mb-2">{vol.role[lang as 'fr' | 'en']}</h4>
                   <div className="text-sm text-slate-400 font-medium">
                     {vol.date[lang as 'fr' | 'en']}
                   </div>

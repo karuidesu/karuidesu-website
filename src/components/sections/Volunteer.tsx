@@ -126,7 +126,7 @@ export default function Volunteer() {
               {t("volunteer.label")}
             </span>
           </div>
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-6">
+          <h2 className="font-display font-semibold text-4xl md:text-5xl text-white mb-6">
             {t("volunteer.title")}
           </h2>
           <p className="text-lg text-slate-300 leading-relaxed font-light mb-8">

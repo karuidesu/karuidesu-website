@@ -92,6 +92,141 @@ export const NeuroCanvas = () => {
   return <canvas ref={canvasRef} className="w-full h-full" />;
 };
 
+export const PsycheCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let cw: number = 0, ch: number = 0;
+
+    const resize = () => {
+      cw = canvas.offsetWidth;
+      ch = canvas.offsetHeight;
+      canvas.width = cw * 2;
+      canvas.height = ch * 2;
+      ctx.scale(2, 2);
+    };
+    resize();
+
+    let t = 0;
+
+    // Floating thought / intuition sparks
+    const sparks = Array.from({ length: 18 }, (_, i) => ({
+      angle: (i / 18) * Math.PI * 2,
+      orbitR: Math.random() * 28 + 22,
+      speed: (Math.random() * 0.015 + 0.01) * (i % 2 === 0 ? 1 : -1),
+      size: Math.random() * 1.6 + 0.8,
+      pulseSpeed: Math.random() * 0.04 + 0.02,
+      color: i % 3 === 0 ? '#38bdf8' : i % 3 === 1 ? '#a855f7' : '#ec4899',
+    }));
+
+    const animate = () => {
+      t += 0.025;
+      ctx.clearRect(0, 0, cw, ch);
+
+      const cx = cw / 2;
+      const cy = ch / 2;
+
+      // Breathing resonance factor
+      const breath = Math.sin(t * 0.8) * 4;
+
+      // 1. Luminous Core (Consciousness spark)
+      const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 32 + breath);
+      coreGrad.addColorStop(0, 'rgba(56, 189, 248, 0.45)');
+      coreGrad.addColorStop(0.4, 'rgba(168, 85, 247, 0.2)');
+      coreGrad.addColorStop(1, 'rgba(15, 23, 42, 0)');
+
+      ctx.fillStyle = coreGrad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 32 + breath, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 2. Harmonic Lissajous / Consciousness Waveforms (Harmoniques de la pensée)
+      const drawHarmonicRing = (
+        k: number,
+        baseR: number,
+        amp: number,
+        color: string,
+        glow: string,
+        rotSpeed: number,
+        lineWidth: number
+      ) => {
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.shadowColor = glow;
+        ctx.shadowBlur = 8;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+
+        const steps = 180;
+        for (let i = 0; i <= steps; i++) {
+          const theta = (i / steps) * Math.PI * 2;
+          const r = baseR + breath + Math.sin(theta * k + t * rotSpeed) * amp;
+          const x = cx + Math.cos(theta) * r;
+          const y = cy + Math.sin(theta) * r * 0.85; // slightly elliptic
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+      };
+
+      // Outer wave: Intuition & Imagination (Violet/Pink)
+      drawHarmonicRing(6, 44, 7, 'rgba(168, 85, 247, 0.65)', '#a855f7', 1.2, 1.4);
+
+      // Middle wave: Rationality & Cognition (Sky blue / Cyan)
+      drawHarmonicRing(4, 32, 6, 'rgba(56, 189, 248, 0.75)', '#38bdf8', -1.5, 1.6);
+
+      // Inner wave: Self-awareness (Bright Cyan / White)
+      drawHarmonicRing(3, 20, 4, 'rgba(125, 211, 252, 0.85)', '#38bdf8', 2.0, 1.8);
+
+      // 3. Floating sparks of thought / intuition
+      for (let s of sparks) {
+        s.angle += s.speed;
+        const currentR = s.orbitR + breath * 0.5 + Math.sin(t * 2 + s.angle) * 3;
+        const sx = cx + Math.cos(s.angle) * currentR;
+        const sy = cy + Math.sin(s.angle) * currentR * 0.85;
+
+        const sparkAlpha = Math.sin(t * 3 + s.angle * 2) * 0.3 + 0.7;
+
+        ctx.save();
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = sparkAlpha;
+        ctx.shadowColor = s.color;
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 4. Central spark point
+      ctx.save();
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 2.5 + Math.sin(t * 1.5) * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  return <canvas ref={canvasRef} className="w-full h-full" />;
+};
+
 export const BizCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

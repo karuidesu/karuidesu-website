@@ -20,7 +20,7 @@ export default function Home() {
           {t("home.greeting")}
         </span>
         <Reveal>
-          <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-[100px] leading-[1.1] text-white mb-8">
+          <h1 className="font-display font-semibold text-6xl md:text-8xl lg:text-[100px] leading-[1.1] text-white mb-8">
             <span>{t("home.intro")} </span><br />
             <span className="text-brand-600">ADONSOU</span><br />
             Kekeli Diane

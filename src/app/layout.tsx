@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
+import "boxicons/css/boxicons.min.css";
 import "./globals.css";
 
 const outfit = Outfit({

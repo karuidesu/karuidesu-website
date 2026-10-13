@@ -28,15 +28,15 @@ export default function Universe() {
 
     const init = () => {
       stars = [];
-      const numStars = Math.floor((width * height) / 3000);
+      const numStars = Math.floor((width * height) / 9000);
       for (let i = 0; i < numStars; i++) {
         stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          radius: Math.random() * 1.5 + 0.5,
+          radius: Math.random() * 1.3 + 0.4,
           alpha: Math.random(),
-          speed: Math.random() * 0.05 + 0.01,
-          blinkSpeed: Math.random() * 0.02 + 0.005,
+          speed: Math.random() * 0.04 + 0.008,
+          blinkSpeed: Math.random() * 0.015 + 0.004,
         });
       }
 
@@ -60,7 +60,7 @@ export default function Universe() {
         const cx = width * 0.8; // upper right
         const cy = height * 0.2; // upper right
         const particles = [];
-        const numParticles = 600;
+        const numParticles = 500;
         const arms = 3;
 
         for (let i = 0; i < numParticles; i++) {
@@ -76,7 +76,7 @@ export default function Universe() {
             dist,
             angle,
             speed: (300 - dist) * 0.00001, // Inner particles rotate slower
-            size: Math.random() * 1.5 + 0.2,
+            size: Math.random() * 1.4 + 0.2,
             r: Math.floor(Math.random() * 50 + 100),
             g: Math.floor(Math.random() * 100 + 100),
             b: Math.floor(Math.random() * 150 + 150)
@@ -85,6 +85,46 @@ export default function Universe() {
         
         galaxies.push({ cx, cy, particles, vx: (Math.random() - 0.5) * 0.02, vy: (Math.random() - 0.5) * 0.02 });
       }
+    };
+
+    // Shooting star state
+    interface ShootingStar {
+      x: number;
+      y: number;
+      length: number;
+      speed: number;
+      angle: number;
+      alpha: number;
+      maxAlpha: number;
+      life: number;
+      maxLife: number;
+      thickness: number;
+      active: boolean;
+    }
+
+    let shootingStar: ShootingStar | null = null;
+    let nextShootingStarDelay = Math.random() * 180 + 120; // 2 to 5 seconds initial delay
+
+    const spawnShootingStar = () => {
+      const angle = (Math.PI / 180) * (Math.random() * 20 + 35); // 35° to 55° downward diagonal
+      const startX = Math.random() * (width * 0.75) + width * 0.05;
+      const startY = Math.random() * (height * 0.35);
+      const speed = Math.random() * 6 + 10;
+      const maxLife = Math.floor(Math.random() * 40 + 50);
+
+      shootingStar = {
+        x: startX,
+        y: startY,
+        length: Math.random() * 100 + 90,
+        speed,
+        angle,
+        alpha: 0,
+        maxAlpha: Math.random() * 0.35 + 0.65,
+        life: 0,
+        maxLife,
+        thickness: Math.random() * 1.5 + 1.2,
+        active: true,
+      };
     };
 
     const animate = () => {
@@ -141,7 +181,7 @@ export default function Universe() {
         }
       }
 
-      // Draw Stars
+      // Draw Stars (quieter, less crowded)
       for (let s of stars) {
         s.alpha += s.blinkSpeed;
         if (s.alpha >= 1 || s.alpha <= 0) {
@@ -159,27 +199,86 @@ export default function Universe() {
         ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
         ctx.fill();
 
-        if (s.radius > 1.8) {
-          ctx.shadowBlur = 10;
+        if (s.radius > 1.5) {
+          ctx.shadowBlur = 8;
           ctx.shadowColor = '#38bdf8';
           ctx.fill();
           ctx.shadowBlur = 0;
         }
       }
 
-      // Connecting lines
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
+      // Subtle constellation links (sparse)
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.035)';
       ctx.lineWidth = 0.5;
-      for (let i = 0; i < stars.length; i += 6) {
-        for (let j = i + 1; j < stars.length; j += 6) {
+      for (let i = 0; i < stars.length; i += 8) {
+        for (let j = i + 1; j < stars.length; j += 8) {
           const dx = stars[i].x - stars[j].x;
           const dy = stars[i].y - stars[j].y;
-          if (dx * dx + dy * dy < 10000) {
+          if (dx * dx + dy * dy < 7500) {
             ctx.beginPath();
             ctx.moveTo(stars[i].x, stars[i].y);
             ctx.lineTo(stars[j].x, stars[j].y);
             ctx.stroke();
           }
+        }
+      }
+
+      // Shooting Star (Étoile filante) logic
+      if (shootingStar && shootingStar.active) {
+        shootingStar.life++;
+        const progress = shootingStar.life / shootingStar.maxLife;
+
+        // Smooth fade-in then fade-out curve
+        if (progress < 0.25) {
+          shootingStar.alpha = (progress / 0.25) * shootingStar.maxAlpha;
+        } else {
+          shootingStar.alpha = (1 - (progress - 0.25) / 0.75) * shootingStar.maxAlpha;
+        }
+
+        const headX = shootingStar.x;
+        const headY = shootingStar.y;
+        const tailX = headX - Math.cos(shootingStar.angle) * shootingStar.length;
+        const tailY = headY - Math.sin(shootingStar.angle) * shootingStar.length;
+
+        // Gradient trail
+        const trailGrad = ctx.createLinearGradient(headX, headY, tailX, tailY);
+        trailGrad.addColorStop(0, `rgba(255, 255, 255, ${shootingStar.alpha})`);
+        trailGrad.addColorStop(0.2, `rgba(56, 189, 248, ${shootingStar.alpha * 0.8})`);
+        trailGrad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+
+        ctx.save();
+        ctx.strokeStyle = trailGrad;
+        ctx.lineWidth = shootingStar.thickness;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#38bdf8';
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(headX, headY);
+        ctx.stroke();
+
+        // Glowing star head
+        ctx.fillStyle = `rgba(255, 255, 255, ${shootingStar.alpha})`;
+        ctx.beginPath();
+        ctx.arc(headX, headY, shootingStar.thickness * 1.3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Advance shooting star
+        shootingStar.x += Math.cos(shootingStar.angle) * shootingStar.speed;
+        shootingStar.y += Math.sin(shootingStar.angle) * shootingStar.speed;
+
+        if (shootingStar.life >= shootingStar.maxLife || shootingStar.x > width + 100 || shootingStar.y > height + 100) {
+          shootingStar.active = false;
+          shootingStar = null;
+          // Set random delay before the next shooting star (roughly 4 to 8 seconds at 60fps)
+          nextShootingStarDelay = Math.random() * 240 + 200;
+        }
+      } else {
+        nextShootingStarDelay--;
+        if (nextShootingStarDelay <= 0) {
+          spawnShootingStar();
         }
       }
 

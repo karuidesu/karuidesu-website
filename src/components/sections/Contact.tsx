@@ -56,7 +56,7 @@ export default function Contact() {
               </span>
               <span className="w-8 h-[2px] bg-brand-600 shadow-[0_0_10px_rgba(2,132,199,0.5)] hidden md:block"></span>
             </div>
-            <h2 className="font-display font-bold text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-lg">
+            <h2 className="font-display font-semibold text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-lg">
               {t("contact.title")}
             </h2>
             <p className="text-slate-300 text-lg leading-relaxed font-light drop-shadow-md mx-auto">
@@ -69,56 +69,49 @@ export default function Contact() {
           <form id="contactForm" onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative z-10">
             <input type="hidden" name="access_key" value={process.env.WEB3FORMS_ACCESS_KEY} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-3 group">
-                <label htmlFor="name" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.name")}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
-                    <i className='bx bx-user text-xl'></i>
-                  </div>
-                  <input type="text" id="name" name="name" required
-                    className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 shadow-inner hover:border-brand-500/30"
-                    placeholder="John Doe" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                  <i className='bx bx-user text-xl'></i>
                 </div>
+                <input type="text" id="name" name="name" required
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-500 shadow-inner hover:border-brand-500/30"
+                  placeholder={t("contact.form.name")} />
               </div>
-              <div className="space-y-3 group">
-                <label htmlFor="email" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.email")}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
-                    <i className='bx bx-envelope text-xl'></i>
-                  </div>
-                  <input type="email" id="email" name="email" required
-                    className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 shadow-inner hover:border-brand-500/30"
-                    placeholder="john@example.com" />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                  <i className='bx bx-envelope text-xl'></i>
                 </div>
+                <input type="email" id="email" name="email" required
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-500 shadow-inner hover:border-brand-500/30"
+                  placeholder={t("contact.form.email")} />
               </div>
             </div>
 
-            <div className="space-y-3 mb-10 group">
-              <label htmlFor="message" className="text-xs font-bold text-brand-300 uppercase tracking-widest ml-1 group-focus-within:text-brand-400 transition-colors">{t("contact.form.msg")}</label>
-              <div className="relative">
-                <div className="absolute top-5 left-0 pl-5 pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
-                  <i className='bx bx-message-square-detail text-xl'></i>
-                </div>
-                <textarea id="message" name="message" rows={5} required
-                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-600 resize-none shadow-inner hover:border-brand-500/30"
-                  placeholder="Bonjour Diane..."></textarea>
+            <div className="mb-8 relative group">
+              <div className="absolute top-5 left-0 pl-5 pointer-events-none text-slate-400 group-focus-within:text-brand-500 transition-colors">
+                <i className='bx bx-message-square-detail text-xl'></i>
               </div>
+              <textarea id="message" name="message" rows={5} required
+                className="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl pl-12 pr-5 py-4 text-white focus:outline-none focus:border-brand-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-brand-500/20 transition-all duration-300 placeholder:text-slate-500 resize-none shadow-inner hover:border-brand-500/30"
+                placeholder={t("contact.form.msg")}></textarea>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center justify-center gap-3 pt-2">
               <button type="submit" id="submitBtn" disabled={isSubmitting}
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-600 hover:bg-brand-500 text-white text-lg font-bold rounded-2xl transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.4)] hover:shadow-[0_0_30px_rgba(2,132,199,0.6)] hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none">
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-brand-600 hover:bg-brand-500 text-white text-sm md:text-base font-semibold rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(2,132,199,0.35)] hover:shadow-[0_0_25px_rgba(2,132,199,0.55)] hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none">
                 {isSubmitting ? (
-                  <><i className='bx bx-loader-alt bx-spin text-2xl'></i> {t("contact.form.sending")}</>
+                  <><i className='bx bx-loader-alt bx-spin text-xl'></i> {t("contact.form.sending")}</>
                 ) : (
-                  <><i className='bx bx-send text-2xl'></i> {t("contact.form.send")}</>
+                  <><i className='bx bx-send text-xl'></i> {t("contact.form.send")}</>
                 )}
               </button>
 
-              <span id="formStatus" className={`text-sm font-bold tracking-wide ${status.type === 'error' ? 'text-red-400' : 'text-green-400'}`}>
-                {status.message}
-              </span>
+              {status.message && (
+                <span id="formStatus" className={`text-sm font-medium tracking-wide text-center ${status.type === 'error' ? 'text-red-400' : 'text-green-400'}`}>
+                  {status.message}
+                </span>
+              )}
             </div>
           </form>
         </Reveal>

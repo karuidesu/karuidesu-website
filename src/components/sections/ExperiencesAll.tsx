@@ -18,7 +18,7 @@ export default function ExperiencesAll() {
         </Link>
         
         <Reveal className="text-center md:text-left mb-16">
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
+          <h2 className="font-display font-semibold text-4xl md:text-5xl text-white">
             {t("skills.all.title")}
           </h2>
         </Reveal>
@@ -33,14 +33,14 @@ export default function ExperiencesAll() {
                   <div className="text-brand-400 font-medium flex items-center">
                     <i className='bx bx-building-house mr-2 text-xl'></i>{exp.company}
                   </div>
-                  <span className="inline-block text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-900/30 px-3 py-1.5 rounded-full border border-brand-800/30 text-center">
+                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-600 bg-brand-900/30 px-3 py-1.5 rounded-full border border-brand-800/30 text-center">
                     {exp.date[lang as 'fr' | 'en']}
                   </span>
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-2">
+                <h4 className="text-2xl font-semibold text-white mb-2">
                   {exp.role[lang as 'fr' | 'en']}
                 </h4>
-                <p className="mt-4 text-slate-300 leading-relaxed whitespace-pre-line font-light">
+                <p className="mt-4 text-slate-300 leading-relaxed whitespace-pre-line font-light text-justify">
                   {exp.description[lang as 'fr' | 'en']}
                 </p>
               </div>

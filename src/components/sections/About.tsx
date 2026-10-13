@@ -17,7 +17,7 @@ export default function About() {
               {t("about.label")}
             </span>
           </div>
-          <h2 className="font-display font-bold text-6xl md:text-8xl leading-tight text-white"
+          <h2 className="font-display font-semibold text-6xl md:text-8xl leading-tight text-white"
             dangerouslySetInnerHTML={{ __html: t("about.title") }}>
           </h2>
 
@@ -26,7 +26,7 @@ export default function About() {
               className="w-12 h-12 rounded-full border border-slate-800 flex items-center justify-center text-xl text-slate-400 hover:text-brand-600 hover:border-brand-600 hover:bg-brand-50 hover:-translate-y-1 transition-all shadow-sm">
               <i className='bx bxl-github'></i>
             </a>
-            <a href="https://tg.linkedin.com/in/kekeli-diane" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/kekeli-diane/" target="_blank" rel="noopener noreferrer"
               className="w-12 h-12 rounded-full border border-slate-800 flex items-center justify-center text-xl text-slate-400 hover:text-brand-600 hover:border-brand-600 hover:bg-brand-50 hover:-translate-y-1 transition-all shadow-sm">
               <i className='bx bxl-linkedin'></i>
             </a>
