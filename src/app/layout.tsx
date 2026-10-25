@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kekeli Diane ADONSOU - @karuidesu Portfolio",
-  description: "Portfolio de Kekeli Diane ADONSOU - Software Engineer, Business Process Analyst et Web Developer.",
+  title: "Kekeli Diane ADONSOU - Software Engineer | Business Process Analyst | Web Developer",
+  description: "Portfolio de Kekeli Diane ADONSOU aka karuidesu.",
 };
 
 export default function RootLayout({
