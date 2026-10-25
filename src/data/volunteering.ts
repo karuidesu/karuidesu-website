@@ -92,8 +92,8 @@ export const VOLUNTEERING = [
       en: "Jul 2023 - Present"
     },
     description: {
-      fr: "Organisation d'événements (Tdev Festival, Meet&Greet, OpenSource Day).\n• Accueil et orientation des participants\n• Assistance aux speakers\n• Gestion du matériel et coordination des bénévoles",
-      en: "Event organization (Tdev Festival, Meet&Greet, OpenSource Day).\n• Welcoming and guiding participants\n• Assisting speakers\n• Equipment management and volunteer coordination"
+      fr: "Organisation d'événements (Tdev Festival, Meet and Greet, OpenSource Day).\n• Accueil et orientation des participants\n• Assistance aux speakers\n• Gestion du matériel et coordination des bénévoles",
+      en: "Event organization (Tdev Festival, Meet and Greet, OpenSource Day).\n• Welcoming and guiding participants\n• Assisting speakers\n• Equipment management and volunteer coordination"
     }
   },
   {
@@ -124,8 +124,8 @@ export const VOLUNTEERING = [
       en: "Dec 2024 - Jun 2025"
     },
     description: {
-      fr: "J'ai été bénévole au sein de la région Auvergne Rhone Alpes en France. J'ai participé à l'animation e plusieurs activités ainsi qu'à une formation pour le projet COURSE CONTRE LA FAIM.",
-      en: "I was a volunteer in the Auvergne Rhone Alpes region in France. I participated in animating several activities and a training course for the project RUN AGAINST HUNGER."
+      fr: "J'ai été bénévole au sein de la région Auvergne Rhône-Alpes en France. J'ai participé à l'animation de plusieurs activités ainsi qu'à une formation pour le projet COURSE CONTRE LA FAIM.",
+      en: "I was a volunteer in the Auvergne Rhône-Alpes region in France. I helped run several activities and participated in a training for the RUN AGAINST HUNGER project."
     }
   },
   {
@@ -147,8 +147,8 @@ export const VOLUNTEERING = [
   {
     id: 10,
     role: {
-      fr: "Responsable projets & Community manager",
-      en: "Project & Community Manager"
+      fr: "Responsable projets et community manager",
+      en: "Project and community manager"
     },
     organization: "ASSOCIATION VICE TOGO",
     date: {
