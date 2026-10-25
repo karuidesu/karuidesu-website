@@ -8,9 +8,52 @@ import { Reveal } from '@/components/Reveal';
 export default function ProjectsAll() {
   const { t } = useLanguage();
 
+  const projectsList = [
+    {
+      id: "p3",
+      titleKey: "projects.p3.title",
+      descKey: "projects.p3.desc",
+      image: "/assets/projects/kesinonou.jpeg",
+      tags: ["Python", "FastAPI", "BPMN", "PostgreSQL"],
+      github: "https://github.com/karuidesu/inheritage-manager",
+    },
+    {
+      id: "wiko",
+      titleKey: "projects.wiko.title",
+      descKey: "projects.wiko.desc",
+      image: "/assets/projects/wiko.jpeg",
+      tags: ["Next.js", "FastAPI", "PostgreSQL"],
+      github: "https://github.com/karuidesu/wiki-manager",
+    },
+    {
+      id: "p2",
+      titleKey: "projects.p2.title",
+      descKey: "projects.p2.desc",
+      image: "/assets/projects/agbale.jpeg",
+      tags: ["FastAPI", "Next.js", "PostgreSQL"],
+      github: "https://github.com/karuidesu/library-management-api",
+    },
+    {
+      id: "p1",
+      titleKey: "projects.p1.title",
+      descKey: "projects.p1.desc",
+      image: "/assets/projects/backend-si.jpg",
+      tags: ["Python", "Django", "REST API"],
+      github: "https://github.com/karuidesu/School-SI-management",
+    },
+    {
+      id: "p5",
+      titleKey: "projects.p5.title",
+      descKey: "projects.p5.desc",
+      image: "/assets/projects/gestion-salles-epl.jpg",
+      tags: ["BPMN 2.0", "UML"],
+      github: "https://github.com/karuidesu/gramsApi",
+    },
+  ];
+
   return (
-    <section id="projects_all" className="min-h-[calc(100vh-72px)] py-16 px-[5%] md:px-[9%] bg-transparent flex flex-col justify-center relative z-10">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="projects_all" className="min-h-screen py-16 px-[5%] md:px-[9%] bg-transparent relative z-10">
+      <div className="max-w-6xl mx-auto w-full">
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 text-sm font-medium mb-10 hover:gap-3 transition-all group"
@@ -19,13 +62,7 @@ export default function ProjectsAll() {
           <span>{t("projects.back")}</span>
         </Link>
 
-        <Reveal className="text-center md:text-left mb-16">
-          <div className="inline-flex items-center gap-4 mb-4">
-            <span className="w-8 h-[2px] bg-brand-600 hidden md:block"></span>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-brand-600">
-              Portfolio
-            </span>
-          </div>
+        <Reveal className="text-center md:text-left mb-14">
           <h2 className="font-display font-semibold text-4xl md:text-5xl text-white mb-4">
             {t("projects.all.title")}
           </h2>
@@ -34,231 +71,73 @@ export default function ProjectsAll() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {/* Project 1: Family Estate & Asset Management Platform */}
-          <Reveal delay={0.1}>
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 flex flex-col h-full transition-colors duration-300">
-              <div className="relative h-52 md:h-60 w-full overflow-hidden shrink-0 bg-slate-950">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/assets/projects/inheritage.jpg')" }}
-                >
+        {/* Projects List: Image on Left, Bold Title & Full Description on Right */}
+        <div className="space-y-10 md:space-y-12">
+          {projectsList.map((project, idx) => (
+            <Reveal key={project.id} delay={0.1 * (idx % 3)}>
+              <div className="group relative w-full rounded-3xl overflow-hidden shadow-2xl bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 p-6 md:p-8 lg:p-9 flex flex-col md:flex-row items-center gap-8 lg:gap-12 transition-all duration-300">
+                {/* Left: Image cleanly framed without extra background block, rounded corners, full occupy */}
+                <div className="w-full md:w-5/12 lg:w-1/2 shrink-0 rounded-2xl overflow-hidden relative shadow-xl border border-slate-800/80 bg-transparent group-hover:border-brand-500/40 transition-colors">
+                  <img
+                    src={project.image}
+                    alt={t(project.titleKey)}
+                    className="w-full h-auto block rounded-2xl transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-              </div>
-              <div className="p-7 md:p-8 flex flex-col flex-grow">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20 w-fit mb-3">
-                  {t("projects.p3.tag")}
-                </span>
-                <h3 className="text-white font-display font-semibold text-2xl mb-3 leading-tight group-hover:text-brand-300 transition-colors">
-                  {t("projects.p3.title")}
-                </h3>
-                <p className="text-slate-300 text-sm font-light leading-relaxed mb-6 line-clamp-3">
-                  {t("projects.p3.desc")}
-                </p>
-                <div className="flex items-center justify-between w-full pt-4 mt-auto border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Python</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">FastAPI</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">BPMN</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">PostgreSQL</span>
-                  </div>
-                  <a
-                    href="https://github.com/karuidesu/inheritage-manager"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Repository"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
-                  >
-                    <i className='bx bxl-github text-xl'></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
 
-          {/* Project 2: Library Management System */}
-          <Reveal delay={0.2}>
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 flex flex-col h-full transition-colors duration-300">
-              <div className="relative h-52 md:h-60 w-full overflow-hidden shrink-0 bg-slate-950">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/assets/projects/gestion-bibliotheque.jpg')" }}
-                >
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-              </div>
-              <div className="p-7 md:p-8 flex flex-col flex-grow">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20 w-fit mb-3">
-                  {t("projects.p2.tag")}
-                </span>
-                <h3 className="text-white font-display font-semibold text-2xl mb-3 leading-tight group-hover:text-brand-300 transition-colors">
-                  {t("projects.p2.title")}
-                </h3>
-                <p className="text-slate-300 text-sm font-light leading-relaxed mb-6 line-clamp-3">
-                  {t("projects.p2.desc")}
-                </p>
-                <div className="flex items-center justify-between w-full pt-4 mt-auto border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">FastAPI</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Next.js</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">PostgreSQL</span>
-                  </div>
-                  <a
-                    href="https://github.com/karuidesu/library-management-api"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Repository"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
-                  >
-                    <i className='bx bxl-github text-xl'></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+                {/* Right: Title in bold on top, full description underneath */}
+                <div className="w-full md:w-7/12 lg:w-1/2 flex flex-col justify-center">
+                  <h3 className="text-white font-display font-bold text-2xl sm:text-3xl md:text-4xl mb-4 leading-snug group-hover:text-brand-300 transition-colors">
+                    {t(project.titleKey)}
+                  </h3>
 
-          {/* Project 3: School SI Management (EPL) */}
-          <Reveal delay={0.3}>
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 flex flex-col h-full transition-colors duration-300">
-              <div className="relative h-52 md:h-60 w-full overflow-hidden shrink-0 bg-slate-950">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/assets/projects/backend-si.jpg')" }}
-                >
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-              </div>
-              <div className="p-7 md:p-8 flex flex-col flex-grow">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20 w-fit mb-3">
-                  {t("projects.p1.tag")}
-                </span>
-                <h3 className="text-white font-display font-semibold text-2xl mb-3 leading-tight group-hover:text-brand-300 transition-colors">
-                  {t("projects.p1.title")}
-                </h3>
-                <p className="text-slate-300 text-sm font-light leading-relaxed mb-6 line-clamp-3">
-                  {t("projects.p1.desc")}
-                </p>
-                <div className="flex items-center justify-between w-full pt-4 mt-auto border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Python</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Django</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">REST API</span>
-                  </div>
-                  <a
-                    href="https://github.com/karuidesu/School-SI-management"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Repository"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
-                  >
-                    <i className='bx bxl-github text-xl'></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+                  <p className="text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed mb-6">
+                    {t(project.descKey)}
+                  </p>
 
-          {/* Project 4: Vice Togo Association */}
-          <Reveal delay={0.4}>
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 flex flex-col h-full transition-colors duration-300">
-              <div className="relative h-52 md:h-60 w-full overflow-hidden shrink-0 bg-slate-950">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/assets/projects/vicetg-site.jpeg')" }}
-                >
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-              </div>
-              <div className="p-7 md:p-8 flex flex-col flex-grow">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20 w-fit mb-3">
-                  {t("projects.p4.tag")}
-                </span>
-                <h3 className="text-white font-display font-semibold text-2xl mb-3 leading-tight group-hover:text-brand-300 transition-colors">
-                  {t("projects.p4.title")}
-                </h3>
-                <p className="text-slate-300 text-sm font-light leading-relaxed mb-6 line-clamp-3">
-                  {t("projects.p4.desc")}
-                </p>
-                <div className="flex items-center justify-between w-full pt-4 mt-auto border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Next.js</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">Tailwind CSS</span>
-                  </div>
-                  <a
-                    href="https://vicetgasso.vercel.app"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Live Website"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
-                  >
-                    <i className='bx bx-link-external text-xl'></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800/60 mt-auto">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium rounded-lg border border-slate-700/60"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-          {/* Project 5: Gestion des Salles EPL */}
-          <Reveal delay={0.5}>
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 flex flex-col h-full transition-colors duration-300">
-              <div className="relative h-52 md:h-60 w-full overflow-hidden shrink-0 bg-slate-950">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/assets/projects/gestion-salles-epl.jpg')" }}
-                >
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-              </div>
-              <div className="p-7 md:p-8 flex flex-col flex-grow">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20 w-fit mb-3">
-                  {t("projects.p5.tag")}
-                </span>
-                <h3 className="text-white font-display font-semibold text-2xl mb-3 leading-tight group-hover:text-brand-300 transition-colors">
-                  {t("projects.p5.title")}
-                </h3>
-                <p className="text-slate-300 text-sm font-light leading-relaxed mb-6 line-clamp-3">
-                  {t("projects.p5.desc")}
-                </p>
-                <div className="flex items-center justify-between w-full pt-4 mt-auto border-t border-slate-800/60">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">BPMN 2.0</span>
-                    <span className="px-2.5 py-1 bg-slate-800/80 backdrop-blur-sm text-slate-200 text-xs font-medium rounded-md border border-slate-700/60">UML</span>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="GitHub Repository"
+                        className="w-11 h-11 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md shrink-0"
+                      >
+                        <i className='bx bxl-github text-2xl'></i>
+                      </a>
+                    )}
                   </div>
-                  <a
-                    href="https://github.com/karuidesu/gramsApi"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Repository"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-600 border border-slate-700/70 hover:border-brand-500 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
-                  >
-                    <i className='bx bxl-github text-xl'></i>
-                  </a>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
 
         {/* Hackathons & Awards Section */}
-        <Reveal className="mt-28 mb-16 text-center md:text-left">
-          <div className="inline-flex items-center gap-4 mb-4">
-            <span className="w-8 h-[2px] bg-brand-600 hidden md:block"></span>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-brand-600">
-              {t("hackathons.label")}
-            </span>
-          </div>
+        <Reveal className="mt-24 mb-14 text-center md:text-left">
           <h2 className="font-display font-semibold text-4xl md:text-5xl text-white">
             {t("hackathons.title")}
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {/* Hackathon 1: Hack4Peace UNFPA */}
           <Reveal delay={0.1}>
             <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 p-7 flex flex-col h-full transition-colors duration-300">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-brand-500/20">
+                <span className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium rounded-lg border border-brand-500/20">
                   {t("hackathons.h1.tag")}
                 </span>
                 <i className='bx bx-award text-2xl text-brand-400'></i>
@@ -283,7 +162,7 @@ export default function ProjectsAll() {
           <Reveal delay={0.2}>
             <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 p-7 flex flex-col h-full transition-colors duration-300">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-block px-3 py-1 bg-amber-500/10 text-amber-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-amber-500/20">
+                <span className="inline-block px-3 py-1 bg-amber-500/10 text-amber-300 text-xs font-medium rounded-lg border border-amber-500/20">
                   {t("hackathons.h2.tag")}
                 </span>
                 <i className='bx bx-trophy text-2xl text-amber-400'></i>
@@ -307,7 +186,7 @@ export default function ProjectsAll() {
           <Reveal delay={0.3}>
             <div className="group relative w-full rounded-3xl overflow-hidden shadow-lg bg-slate-900/50 backdrop-blur-md border border-slate-800/90 hover:border-brand-500/50 p-7 flex flex-col h-full transition-colors duration-300">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-block px-3 py-1 bg-sky-500/10 text-sky-300 text-xs font-medium uppercase tracking-wider rounded-lg border border-sky-500/20">
+                <span className="inline-block px-3 py-1 bg-sky-500/10 text-sky-300 text-xs font-medium rounded-lg border border-sky-500/20">
                   {t("hackathons.h3.tag")}
                 </span>
                 <i className='bx bx-group text-2xl text-sky-400'></i>

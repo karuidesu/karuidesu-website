@@ -117,15 +117,9 @@ export default function Volunteer() {
   }, []);
 
   return (
-    <section id="volunteer" className="scroll-mt-[72px] py-16 px-[5%] md:px-[9%] bg-slate-900/40 border-y border-slate-800">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+    <section id="volunteer" className="scroll-mt-[72px] min-h-[calc(100vh-72px)] py-16 px-[5%] md:px-[9%] bg-slate-900/40 border-y border-slate-800 flex flex-col justify-center relative overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
         <Reveal className="lg:w-1/2">
-          <div className="inline-flex items-center gap-4 mb-4">
-            <span className="w-8 h-[2px] bg-brand-600 hidden lg:block"></span>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-600">
-              {t("volunteer.label")}
-            </span>
-          </div>
           <h2 className="font-display font-semibold text-4xl md:text-5xl text-white mb-6">
             {t("volunteer.title")}
           </h2>
@@ -143,7 +137,7 @@ export default function Volunteer() {
 
           <div
             ref={containerRef}
-            className="bg-slate-950/80 p-8 rounded-3xl border border-slate-800 relative z-10 shadow-2xl h-[400px] overflow-hidden w-full"
+            className="bg-slate-950/80 p-8 rounded-3xl border border-slate-800 relative z-10 shadow-2xl h-[440px] md:h-[480px] overflow-hidden w-full"
           >
             {logos.map((src, i) => (
               <div

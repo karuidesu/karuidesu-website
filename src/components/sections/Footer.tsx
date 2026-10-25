@@ -13,45 +13,45 @@ export default function Footer() {
         {/* Left: Copyright */}
         <div className="flex-1 flex justify-center md:justify-start">
           <p className="text-slate-500 text-sm font-normal">
-            2026 © @karuidesu. {t("footer.rights")}
+            2026 © Kekeli Diane ADONSOU • karuidesu | {t("footer.rights")}
           </p>
         </div>
 
         {/* Middle: Social Logos */}
         <div className="flex-1 flex items-center justify-center gap-6">
-            <a 
-              href="https://github.com/karuidesu" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="GitHub"
-              className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
-            >
-              <i className='bx bxl-github'></i>
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/kekeli-diane/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="LinkedIn"
-              className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
-            >
-              <i className='bx bxl-linkedin'></i>
-            </a>
-            <a 
-              href="https://x.com/karuidesu_" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Twitter / X"
-              className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
-            >
-              <i className='bx bxl-twitter'></i>
-            </a>
-          </div>
+          <a
+            href="https://github.com/karuidesu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
+          >
+            <i className='bx bxl-github'></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/kekeli-diane/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
+          >
+            <i className='bx bxl-linkedin'></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@karuidesu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+            className="text-slate-400 hover:text-brand-500 hover:-translate-y-0.5 transition-all text-2xl"
+          >
+            <i className='bx bxl-tiktok'></i>
+          </a>
+        </div>
 
         {/* Right: Up Button */}
         <div className="flex-1 flex justify-center md:justify-end">
-          <a 
-            href="/#home" 
+          <a
+            href="/#home"
             aria-label="Back to top"
             className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-brand-500 hover:border-brand-500 transition-all shadow-sm"
           >

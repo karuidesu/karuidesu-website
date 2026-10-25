@@ -49,13 +49,6 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
         <div className="md:w-5/12 flex flex-col justify-center text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-4 mb-6 justify-center">
-              <span className="w-8 h-[2px] bg-brand-600 shadow-[0_0_10px_rgba(2,132,199,0.5)]"></span>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-400">
-                {t("contact.label")}
-              </span>
-              <span className="w-8 h-[2px] bg-brand-600 shadow-[0_0_10px_rgba(2,132,199,0.5)] hidden md:block"></span>
-            </div>
             <h2 className="font-display font-semibold text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-lg">
               {t("contact.title")}
             </h2>

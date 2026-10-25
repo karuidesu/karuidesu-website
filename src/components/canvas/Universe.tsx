@@ -24,6 +24,7 @@ export default function Universe() {
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
+      init();
     };
 
     const init = () => {
@@ -55,10 +56,10 @@ export default function Universe() {
       }
 
       galaxies = [];
-      // Generate one beautiful spiral galaxy on the upper right
+      // Generate one beautiful spiral galaxy on the upper left
       for (let g = 0; g < 1; g++) {
-        const cx = width * 0.8; // upper right
-        const cy = height * 0.2; // upper right
+        const cx = width * 0.18; // upper left
+        const cy = height * 0.22; // upper left
         const particles = [];
         const numParticles = 500;
         const arms = 3;

@@ -502,3 +502,157 @@ export const AstroCanvas = () => {
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
 };
+
+export const AgriCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let cw: number = 0, ch: number = 0;
+
+    const resize = () => {
+      cw = canvas.offsetWidth;
+      ch = canvas.offsetHeight;
+      canvas.width = cw * 2;
+      canvas.height = ch * 2;
+      ctx.scale(2, 2);
+    };
+    resize();
+
+    let t = 0;
+
+    // Organic spores / glowing pollen particles
+    const spores = Array.from({ length: 16 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      speed: Math.random() * 0.4 + 0.2,
+      size: Math.random() * 1.5 + 0.8,
+      seed: Math.random() * Math.PI * 2,
+    }));
+
+    const animate = () => {
+      t += 0.02;
+      ctx.clearRect(0, 0, cw, ch);
+
+      const cx = cw / 2;
+      const baseY = ch * 0.82;
+
+      // Soft ground / fertile soil nutrition glow
+      const groundGrad = ctx.createRadialGradient(cx, baseY, 5, cx, baseY, 60);
+      groundGrad.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
+      groundGrad.addColorStop(1, 'rgba(16, 185, 129, 0)');
+      ctx.fillStyle = groundGrad;
+      ctx.beginPath();
+      ctx.ellipse(cx, baseY, 50, 14, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Gentle wind sway
+      const sway = Math.sin(t * 1.2) * 5;
+      const swayTip = Math.sin(t * 1.2 + 0.5) * 8;
+
+      // Draw Main Stem
+      ctx.save();
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.shadowColor = '#10b981';
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.moveTo(cx, baseY);
+      ctx.quadraticCurveTo(cx - sway * 0.4, baseY - 32, cx + swayTip, baseY - 62);
+      ctx.stroke();
+      ctx.restore();
+
+      const tipX = cx + swayTip;
+      const tipY = baseY - 62;
+
+      // Draw Leaf function
+      const drawLeaf = (
+        x: number,
+        y: number,
+        scale: number,
+        angle: number,
+        curvature: number,
+        color1: string,
+        color2: string
+      ) => {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.scale(scale, scale);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-14 * curvature, -12, -20 * curvature, -24, 0, -38);
+        ctx.bezierCurveTo(8 * curvature, -24, 6 * curvature, -12, 0, 0);
+
+        const leafGrad = ctx.createLinearGradient(0, 0, 0, -38);
+        leafGrad.addColorStop(0, color1);
+        leafGrad.addColorStop(1, color2);
+
+        ctx.fillStyle = leafGrad;
+        ctx.shadowColor = color2;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+
+        // Central leaf vein
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.lineWidth = 1;
+        ctx.shadowBlur = 0;
+        ctx.beginPath();
+        ctx.moveTo(0, -2);
+        ctx.lineTo(0, -34);
+        ctx.stroke();
+
+        ctx.restore();
+      };
+
+      // Left Leaf
+      const leftAngle = -0.75 + Math.sin(t * 1.2 - 0.2) * 0.08;
+      drawLeaf(cx + sway * 0.2, baseY - 34, 0.8, leftAngle, 1, '#059669', '#34d399');
+
+      // Right Leaf
+      const rightAngle = 0.8 + Math.sin(t * 1.2 + 0.3) * 0.08;
+      drawLeaf(cx + sway * 0.5, baseY - 46, 0.9, rightAngle, 1, '#10b981', '#6ee7b7');
+
+      // Top young shoot
+      const budAngle = 0.15 + Math.sin(t * 1.2 + 0.6) * 0.1;
+      drawLeaf(tipX, tipY, 0.55, budAngle, 0.8, '#34d399', '#a7f3d0');
+
+      // Floating spores / glowing particles rising
+      for (let s of spores) {
+        s.y -= s.speed * 0.005;
+        if (s.y < 0) {
+          s.y = 1;
+          s.x = Math.random();
+        }
+        const px = s.x * cw + Math.sin(t * 2 + s.seed) * 8;
+        const py = s.y * ch;
+        const alpha = Math.sin(s.y * Math.PI) * 0.7;
+
+        ctx.save();
+        ctx.fillStyle = '#34d399';
+        ctx.globalAlpha = Math.max(0, alpha);
+        ctx.shadowColor = '#10b981';
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.arc(px, py, s.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  return <canvas ref={canvasRef} className="w-full h-full" />;
+};
+
